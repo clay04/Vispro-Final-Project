@@ -80,6 +80,91 @@ namespace Klinik
             //e.Graphics.DrawPath(pen, path);
         }
 
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDataRekamMedis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNamaPasien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAlamatPasien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTanggalLahirPasien_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIDPasien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDaftarObat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void AdminnFrm_Load(object sender, EventArgs e)
         {
             panel1.Paint += new PaintEventHandler(panel1_Paint);

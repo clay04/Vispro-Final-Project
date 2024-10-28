@@ -61,6 +61,12 @@
     <Compile Include="AdminnFrm.Designer.cs">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DaftarObat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarObat.Designer.cs">
+      <DependentUpon>DaftarObat.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminnFrm.resx">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarObat.resx">
+      <DependentUpon>DaftarObat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffFrm.resx">
       <DependentUpon>StaffFrm.cs</DependentUpon>

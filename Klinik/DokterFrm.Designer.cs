@@ -59,6 +59,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtIDPasien = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -88,6 +89,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.btnRiwayatRekamMedis);
             this.splitContainer1.Panel1.Controls.Add(this.btnRekamMedis);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -427,6 +429,17 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "ID Pasien";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 388);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(286, 38);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Rekam Medis\r\n";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // DokterFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -485,5 +498,6 @@
         private System.Windows.Forms.Panel panelRiwayatRekamMedis;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }
