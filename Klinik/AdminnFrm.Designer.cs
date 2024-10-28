@@ -35,6 +35,13 @@
             this.btnDaftarObat = new System.Windows.Forms.Button();
             this.PanelDaftarPasien = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dateTanggalLahirPasien = new System.Windows.Forms.DateTimePicker();
+            this.txtAlamatPasien = new System.Windows.Forms.TextBox();
+            this.txtNamaPasien = new System.Windows.Forms.TextBox();
+            this.txtIDPasien = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,13 +49,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtIDPasien = new System.Windows.Forms.TextBox();
-            this.txtNamaPasien = new System.Windows.Forms.TextBox();
-            this.txtAlamatPasien = new System.Windows.Forms.TextBox();
-            this.dateTanggalLahirPasien = new System.Windows.Forms.DateTimePicker();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnTenagaKerja = new System.Windows.Forms.Button();
+            this.panelTengaKerja = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,6 +81,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel1.Controls.Add(this.btnTenagaKerja);
             this.splitContainer1.Panel1.Controls.Add(this.btnDataRekamMedis);
             this.splitContainer1.Panel1.Controls.Add(this.btnDaftarPasien);
             this.splitContainer1.Panel1.Controls.Add(this.btnDaftarObat);
@@ -96,7 +99,7 @@
             // 
             this.btnDataRekamMedis.BackColor = System.Drawing.Color.Transparent;
             this.btnDataRekamMedis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDataRekamMedis.Location = new System.Drawing.Point(9, 321);
+            this.btnDataRekamMedis.Location = new System.Drawing.Point(9, 322);
             this.btnDataRekamMedis.Margin = new System.Windows.Forms.Padding(0);
             this.btnDataRekamMedis.Name = "btnDataRekamMedis";
             this.btnDataRekamMedis.Size = new System.Drawing.Size(353, 38);
@@ -132,6 +135,7 @@
             // 
             // PanelDaftarPasien
             // 
+            this.PanelDaftarPasien.Controls.Add(this.panelTengaKerja);
             this.PanelDaftarPasien.Controls.Add(this.panel1);
             this.PanelDaftarPasien.Controls.Add(this.dataGridView1);
             this.PanelDaftarPasien.Controls.Add(this.label3);
@@ -160,6 +164,69 @@
             this.panel1.Size = new System.Drawing.Size(1139, 360);
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(312, 288);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(99, 43);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(171, 288);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(99, 43);
+            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(36, 288);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(99, 43);
+            this.btnSearch.TabIndex = 10;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // dateTanggalLahirPasien
+            // 
+            this.dateTanggalLahirPasien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTanggalLahirPasien.Location = new System.Drawing.Point(221, 111);
+            this.dateTanggalLahirPasien.Name = "dateTanggalLahirPasien";
+            this.dateTanggalLahirPasien.Size = new System.Drawing.Size(522, 34);
+            this.dateTanggalLahirPasien.TabIndex = 9;
+            // 
+            // txtAlamatPasien
+            // 
+            this.txtAlamatPasien.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlamatPasien.Location = new System.Drawing.Point(221, 156);
+            this.txtAlamatPasien.Multiline = true;
+            this.txtAlamatPasien.Name = "txtAlamatPasien";
+            this.txtAlamatPasien.Size = new System.Drawing.Size(522, 105);
+            this.txtAlamatPasien.TabIndex = 8;
+            // 
+            // txtNamaPasien
+            // 
+            this.txtNamaPasien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNamaPasien.Location = new System.Drawing.Point(221, 67);
+            this.txtNamaPasien.Name = "txtNamaPasien";
+            this.txtNamaPasien.Size = new System.Drawing.Size(522, 34);
+            this.txtNamaPasien.TabIndex = 7;
+            // 
+            // txtIDPasien
+            // 
+            this.txtIDPasien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDPasien.Location = new System.Drawing.Point(221, 23);
+            this.txtIDPasien.Name = "txtIDPasien";
+            this.txtIDPasien.Size = new System.Drawing.Size(522, 34);
+            this.txtIDPasien.TabIndex = 6;
             // 
             // label6
             // 
@@ -234,68 +301,28 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Hello Admin";
             // 
-            // txtIDPasien
+            // btnTenagaKerja
             // 
-            this.txtIDPasien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDPasien.Location = new System.Drawing.Point(221, 23);
-            this.txtIDPasien.Name = "txtIDPasien";
-            this.txtIDPasien.Size = new System.Drawing.Size(522, 34);
-            this.txtIDPasien.TabIndex = 6;
+            this.btnTenagaKerja.BackColor = System.Drawing.Color.Transparent;
+            this.btnTenagaKerja.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTenagaKerja.Location = new System.Drawing.Point(9, 362);
+            this.btnTenagaKerja.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTenagaKerja.Name = "btnTenagaKerja";
+            this.btnTenagaKerja.Size = new System.Drawing.Size(353, 38);
+            this.btnTenagaKerja.TabIndex = 9;
+            this.btnTenagaKerja.Text = "Tenaga Kerja";
+            this.btnTenagaKerja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTenagaKerja.UseVisualStyleBackColor = false;
+            this.btnTenagaKerja.Click += new System.EventHandler(this.btnTenagaKerja_Click);
             // 
-            // txtNamaPasien
+            // panelTengaKerja
             // 
-            this.txtNamaPasien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNamaPasien.Location = new System.Drawing.Point(221, 67);
-            this.txtNamaPasien.Name = "txtNamaPasien";
-            this.txtNamaPasien.Size = new System.Drawing.Size(522, 34);
-            this.txtNamaPasien.TabIndex = 7;
-            // 
-            // txtAlamatPasien
-            // 
-            this.txtAlamatPasien.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlamatPasien.Location = new System.Drawing.Point(221, 156);
-            this.txtAlamatPasien.Multiline = true;
-            this.txtAlamatPasien.Name = "txtAlamatPasien";
-            this.txtAlamatPasien.Size = new System.Drawing.Size(522, 105);
-            this.txtAlamatPasien.TabIndex = 8;
-            // 
-            // dateTanggalLahirPasien
-            // 
-            this.dateTanggalLahirPasien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTanggalLahirPasien.Location = new System.Drawing.Point(221, 111);
-            this.dateTanggalLahirPasien.Name = "dateTanggalLahirPasien";
-            this.dateTanggalLahirPasien.Size = new System.Drawing.Size(522, 34);
-            this.dateTanggalLahirPasien.TabIndex = 9;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(36, 288);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(99, 43);
-            this.btnSearch.TabIndex = 10;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(171, 288);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(99, 43);
-            this.btnUpdate.TabIndex = 11;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(312, 288);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(99, 43);
-            this.btnDelete.TabIndex = 12;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.panelTengaKerja.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTengaKerja.Location = new System.Drawing.Point(0, 0);
+            this.panelTengaKerja.Name = "panelTengaKerja";
+            this.panelTengaKerja.Size = new System.Drawing.Size(1181, 892);
+            this.panelTengaKerja.TabIndex = 7;
+            this.panelTengaKerja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTengaKerja_Paint);
             // 
             // AdminnFrm
             // 
@@ -345,5 +372,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnTenagaKerja;
+        private System.Windows.Forms.Panel panelTengaKerja;
     }
 }

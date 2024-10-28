@@ -31,6 +31,7 @@ namespace Klinik
             koneksi = new MySqlConnection(alamat);
 
             PanelDaftarPasien.Visible = false;
+            panelTengaKerja.Visible = false;
 
         }
 
@@ -47,6 +48,7 @@ namespace Klinik
         private void btnDaftarPasien_Click(object sender, EventArgs e)
         {
             PanelDaftarPasien.Visible=true;
+            panelTengaKerja.Visible=false;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -78,6 +80,17 @@ namespace Klinik
             // Gambar border (opsional)
             //Pen pen = new Pen(Color.Black, 1);
             //e.Graphics.DrawPath(pen, path);
+        }
+
+        private void btnTenagaKerja_Click(object sender, EventArgs e)
+        {
+            PanelDaftarPasien.Visible = false;
+            panelTengaKerja.Visible = true;
+        }
+
+        private void panelTengaKerja_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void AdminnFrm_Load(object sender, EventArgs e)
