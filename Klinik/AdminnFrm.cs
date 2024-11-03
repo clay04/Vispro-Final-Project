@@ -31,6 +31,8 @@ namespace Klinik
             koneksi = new MySqlConnection(alamat);
 
             PanelDaftarPasien.Visible = false;
+            PanelObat.Visible = false;
+            PanelRekam.Visible = false;
 
         }
 
@@ -46,7 +48,49 @@ namespace Klinik
 
         private void btnDaftarPasien_Click(object sender, EventArgs e)
         {
+            PanelRekam.Visible = false;
+            PanelObat.Visible = false;
             PanelDaftarPasien.Visible=true;
+
+            if (PanelDaftarPasien.Visible)
+            {
+                try
+                {
+                    koneksi.Open();
+                    query = "SELECT id_pasien, nama_pasien, DATE_FORMAT(tanggal_lahir, '%Y-%m-%d') AS tanggal_lahir, Alamat, no_telepon, gender, DATE_FORMAT(tanggal_daftar, '%Y-%m-%d') AS tanggal_daftar, riwayat_penyakit FROM tbl_pasien";
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    ds.Clear();
+                    adapter.Fill(ds);
+                    koneksi.Close();
+
+                    dataGridView1.DataSource = ds.Tables[0];
+
+                    // Set properties of the DataGridView columns
+                    dataGridView1.Columns[0].Width = 100;
+                    dataGridView1.Columns[0].HeaderText = "ID Pasien";
+                    dataGridView1.Columns[1].Width = 150;
+                    dataGridView1.Columns[1].HeaderText = "Nama Pasien";
+                    dataGridView1.Columns[2].Width = 120;
+                    dataGridView1.Columns[2].HeaderText = "Tanggal Lahir";
+                    dataGridView1.Columns[3].Width = 120;
+                    dataGridView1.Columns[3].HeaderText = "Alamat";
+                    dataGridView1.Columns[4].Width = 120;
+                    dataGridView1.Columns[4].HeaderText = "Nomor Telepon";
+                    dataGridView1.Columns[5].Width = 120;
+                    dataGridView1.Columns[5].HeaderText = "Jenis Kelamin";
+                    dataGridView1.Columns[6].Width = 120;
+                    dataGridView1.Columns[6].HeaderText = "Tanggal Daftar";
+                    dataGridView1.Columns[7].Width = 120;
+                    dataGridView1.Columns[7].HeaderText = "Riwayat Penyakit";
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -92,7 +136,48 @@ namespace Klinik
 
         private void btnDataRekamMedis_Click(object sender, EventArgs e)
         {
+            PanelDaftarPasien.Visible = false;
+            PanelRekam.Visible = true;
+            PanelObat.Visible = false;
 
+            if (PanelRekam.Visible)
+            {
+                try
+                {
+                    koneksi.Open();
+                    query = "SELECT id_pasien, nama_pasien, DATE_FORMAT(tanggal_lahir, '%Y-%m-%d') AS tanggal_lahir, Alamat, no_telepon, gender, DATE_FORMAT(tanggal_daftar, '%Y-%m-%d') AS tanggal_daftar, riwayat_penyakit FROM tbl_pasien";
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    ds.Clear();
+                    adapter.Fill(ds);
+                    koneksi.Close();
+
+                    dataGridView3.DataSource = ds.Tables[0];
+
+                    // Set properties of the DataGridView columns
+                    dataGridView3.Columns[0].Width = 100;
+                    dataGridView3.Columns[0].HeaderText = "ID Pasien";
+                    dataGridView3.Columns[1].Width = 150;
+                    dataGridView3.Columns[1].HeaderText = "Nama Pasien";
+                    dataGridView3.Columns[2].Width = 120;
+                    dataGridView3.Columns[2].HeaderText = "Tanggal Lahir";
+                    dataGridView3.Columns[3].Width = 120;
+                    dataGridView3.Columns[3].HeaderText = "Alamat";
+                    dataGridView3.Columns[4].Width = 120;
+                    dataGridView3.Columns[4].HeaderText = "Nomor Telepon";
+                    dataGridView3.Columns[5].Width = 120;
+                    dataGridView3.Columns[5].HeaderText = "Jenis Kelamin";
+                    dataGridView3.Columns[6].Width = 120;
+                    dataGridView3.Columns[6].HeaderText = "Tanggal Daftar";
+                    dataGridView3.Columns[7].Width = 120;
+                    dataGridView3.Columns[7].HeaderText = "Riwayat Penyakit";
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
         private void txtNamaPasien_TextChanged(object sender, EventArgs e)
@@ -157,6 +242,32 @@ namespace Klinik
 
         private void btnDaftarObat_Click(object sender, EventArgs e)
         {
+            PanelDaftarPasien.Visible = false;
+            PanelRekam.Visible = false;
+            PanelObat.Visible = true;
+
+            if (PanelObat.Visible)
+            {
+                try
+                {
+                    koneksi.Open();
+                    query = "SELECT id_pasien, nama_pasien, DATE_FORMAT(tanggal_lahir, '%Y-%m-%d') AS tanggal_lahir, Alamat, no_telepon, gender, DATE_FORMAT(tanggal_daftar, '%Y-%m-%d') AS tanggal_daftar, riwayat_penyakit FROM tbl_pasien";
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    ds.Clear();
+                    adapter.Fill(ds);
+                    koneksi.Close();
+
+                    dataGridView2.DataSource = ds.Tables[0];
+
+                    // Set properties of the DataGridView columns
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
 
         }
 
@@ -165,45 +276,17 @@ namespace Klinik
 
         }
 
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void AdminnFrm_Load(object sender, EventArgs e)
         {
-            panel1.Paint += new PaintEventHandler(panel1_Paint);
 
-            try
-            {
-                koneksi.Open();
-                query = "SELECT id_pasien, nama_pasien, DATE_FORMAT(tanggal_lahir, '%Y-%m-%d') AS tanggal_lahir, Alamat, no_telepon, gender, DATE_FORMAT(tanggal_daftar, '%Y-%m-%d') AS tanggal_daftar, riwayat_penyakit FROM tbl_pasien";
-                perintah = new MySqlCommand(query, koneksi);
-                adapter = new MySqlDataAdapter(perintah);
-                ds.Clear();
-                adapter.Fill(ds);
-                koneksi.Close();
-
-                dataGridView1.DataSource = ds.Tables[0];
-
-                // Set properties of the DataGridView columns
-                dataGridView1.Columns[0].Width = 100;
-                dataGridView1.Columns[0].HeaderText = "ID Pasien";
-                dataGridView1.Columns[1].Width = 150;
-                dataGridView1.Columns[1].HeaderText = "Nama Pasien";
-                dataGridView1.Columns[2].Width = 120;
-                dataGridView1.Columns[2].HeaderText = "Tanggal Lahir";
-                dataGridView1.Columns[3].Width = 120;
-                dataGridView1.Columns[3].HeaderText = "Alamat";
-                dataGridView1.Columns[4].Width = 120;
-                dataGridView1.Columns[4].HeaderText = "Nomor Telepon";
-                dataGridView1.Columns[5].Width = 120;
-                dataGridView1.Columns[5].HeaderText = "Jenis Kelamin";
-                dataGridView1.Columns[6].Width = 120;
-                dataGridView1.Columns[6].HeaderText = "Tanggal Daftar";
-                dataGridView1.Columns[7].Width = 120;
-                dataGridView1.Columns[7].HeaderText = "Riwayat Penyakit";
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                
+            
+            
         }
     }
 }
