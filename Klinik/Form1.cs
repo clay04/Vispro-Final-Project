@@ -95,7 +95,7 @@ namespace Klinik
                 {
                     query = "SELECT * FROM tbl_dokter WHERE username_dokter = @username";
                 }
-                else if (CBUser.SelectedItem.ToString() == "admin")
+                else if (CBUser.SelectedItem.ToString() == "Admin")
                 {
                     query = "SELECT * FROM tbl_user WHERE username = @username";
                 }
@@ -138,10 +138,14 @@ namespace Klinik
                                 DokterFrm frmDoctor = new DokterFrm();
                                 frmDoctor.Show();
                             }
-                            else if (CBUser.SelectedItem.ToString() == "admin")
+                            else if (CBUser.SelectedItem.ToString() == "Admin")
                             {
-                                AdminnFrm frmAdminn = new AdminnFrm();
-                                frmAdminn.Show();
+                                this.Hide(); // Sembunyikan Form1
+                                AdminnFrm form2 = new AdminnFrm();
+
+                                // Tampilkan Form1 kembali setelah Form2 ditutup
+                                form2.FormClosed += (s, args) => this.Close();
+                                form2.Show();
                             }
                         }
                         else
