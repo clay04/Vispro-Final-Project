@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnRiwayatRekamMedis = new System.Windows.Forms.Button();
             this.btnRekamMedis = new System.Windows.Forms.Button();
-            this.panelRiwayatRekamMedis = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelRekamMedis = new System.Windows.Forms.Panel();
             this.cardRekamMedis = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -59,25 +56,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtIDPasien = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.panelRiwayatRekamMedis = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panelRiwayatRekamMedis.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelRekamMedis.SuspendLayout();
             this.cardRekamMedis.SuspendLayout();
+            this.panelRiwayatRekamMedis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome Dokter";
             // 
             // splitContainer1
             // 
@@ -88,19 +80,35 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.btnLogout);
             this.splitContainer1.Panel1.Controls.Add(this.btnRiwayatRekamMedis);
             this.splitContainer1.Panel1.Controls.Add(this.btnRekamMedis);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelRiwayatRekamMedis);
             this.splitContainer1.Panel2.Controls.Add(this.panelRekamMedis);
+            this.splitContainer1.Panel2.Controls.Add(this.panelRiwayatRekamMedis);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1867, 833);
             this.splitContainer1.SplitterDistance = 350;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Red;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogout.Location = new System.Drawing.Point(12, 707);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(286, 52);
+            this.btnLogout.TabIndex = 11;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnRiwayatRekamMedis
             // 
@@ -125,37 +133,6 @@
             this.btnRekamMedis.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRekamMedis.UseVisualStyleBackColor = true;
             this.btnRekamMedis.Click += new System.EventHandler(this.btnRekamMedis_Click);
-            // 
-            // panelRiwayatRekamMedis
-            // 
-            this.panelRiwayatRekamMedis.Controls.Add(this.label13);
-            this.panelRiwayatRekamMedis.Controls.Add(this.dataGridView1);
-            this.panelRiwayatRekamMedis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRiwayatRekamMedis.Location = new System.Drawing.Point(0, 0);
-            this.panelRiwayatRekamMedis.Name = "panelRiwayatRekamMedis";
-            this.panelRiwayatRekamMedis.Size = new System.Drawing.Size(1513, 833);
-            this.panelRiwayatRekamMedis.TabIndex = 1;
-            this.panelRiwayatRekamMedis.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRiwayatRekamMedis_Paint);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(30, 107);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(305, 38);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Riwayat Rekam Medis";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 171);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1445, 383);
-            this.dataGridView1.TabIndex = 0;
             // 
             // panelRekamMedis
             // 
@@ -427,6 +404,47 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "ID Pasien";
             // 
+            // panelRiwayatRekamMedis
+            // 
+            this.panelRiwayatRekamMedis.Controls.Add(this.label13);
+            this.panelRiwayatRekamMedis.Controls.Add(this.dataGridView1);
+            this.panelRiwayatRekamMedis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRiwayatRekamMedis.Location = new System.Drawing.Point(0, 0);
+            this.panelRiwayatRekamMedis.Name = "panelRiwayatRekamMedis";
+            this.panelRiwayatRekamMedis.Size = new System.Drawing.Size(1513, 833);
+            this.panelRiwayatRekamMedis.TabIndex = 1;
+            this.panelRiwayatRekamMedis.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRiwayatRekamMedis_Paint);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(30, 107);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(305, 38);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Riwayat Rekam Medis";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(37, 171);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1445, 383);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Klinik.Properties.Resources.logo_klinik;
+            this.pictureBox3.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(140, 133);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            // 
             // DokterFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -438,23 +456,21 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DokterFrm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panelRiwayatRekamMedis.ResumeLayout(false);
-            this.panelRiwayatRekamMedis.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelRekamMedis.ResumeLayout(false);
             this.cardRekamMedis.ResumeLayout(false);
             this.cardRekamMedis.PerformLayout();
+            this.panelRiwayatRekamMedis.ResumeLayout(false);
+            this.panelRiwayatRekamMedis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnRekamMedis;
         private System.Windows.Forms.Panel panelRekamMedis;
@@ -485,5 +501,7 @@
         private System.Windows.Forms.Panel panelRiwayatRekamMedis;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

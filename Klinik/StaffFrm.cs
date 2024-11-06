@@ -132,39 +132,84 @@ namespace Klinik
         {
             try
             {
-                if (txtNamaPasien.Text != "" && dateTglLhirPasien.Text != "" && txtAlamat.Text != "" && txtNomorTelepon.Text != "" && CBJenisKelamin.Text != "" && dateTglDaftar.Text != "" && txtRiwayatPenyakit.Text != "")
+                if (txtNamaPasien.Text != "" && dateTglLhirPasien.Text != "" && txtAlamat.Text != "" &&
+                    txtNomorTelepon.Text != "" && CBJenisKelamin.Text != "" && dateTglDaftar.Text != "" &&
+                    txtRiwayatPenyakit.Text != "")
                 {
+                    // Format tanggal
                     string tglLahir = dateTglLhirPasien.Value.ToString("yyyy-MM-dd");
                     string tglDaftar = dateTglDaftar.Value.ToString("yyyy-MM-dd");
 
-                    query = string.Format("insert into tbl_pasien values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');", txtIDPasien.Text, txtNamaPasien.Text, tglLahir, txtAlamat.Text, txtNomorTelepon.Text, CBJenisKelamin.Text, tglDaftar, txtRiwayatPenyakit.Text);
-
-
                     koneksi.Open();
-                    perintah = new MySqlCommand(query, koneksi);
-                    adapter = new MySqlDataAdapter(perintah);
-                    int res = perintah.ExecuteNonQuery();
+
+                    // 1. Insert ke tabel `tbl_pasien`
+                    string queryPasien = "INSERT INTO tbl_pasien (nama_pasien, tanggal_lahir, alamat, no_telepon, gender, riwayat_penyakit) " +
+                                         "VALUES (@nama_pasien, @tanggal_lahir, @alamat, @no_telepon, @gender, @riwayat_penyakit);";
+                    long idPasien; // Variabel untuk menyimpan id pasien yang baru
+
+                    using (MySqlCommand perintahPasien = new MySqlCommand(queryPasien, koneksi))
+                    {
+                        //parameter untuk tbl_pasien
+                        perintahPasien.Parameters.AddWithValue("@nama_pasien", txtNamaPasien.Text);
+                        perintahPasien.Parameters.AddWithValue("@tanggal_lahir", tglLahir);
+                        perintahPasien.Parameters.AddWithValue("@alamat", txtAlamat.Text);
+                        perintahPasien.Parameters.AddWithValue("@no_telepon", txtNomorTelepon.Text);
+                        perintahPasien.Parameters.AddWithValue("@gender", CBJenisKelamin.Text);
+                        perintahPasien.Parameters.AddWithValue("@riwayat_penyakit", txtRiwayatPenyakit.Text);
+
+                        // Eksekusi query untuk `tbl_pasien` dan ambil `LastInsertedId`
+                        int resPasien = perintahPasien.ExecuteNonQuery();
+                        if (resPasien != 1)
+                        {
+                            MessageBox.Show("Gagal Insert Data Pasien.");
+                            koneksi.Close();
+                            return;
+                        }
+
+                        // Ambil id_pasien terakhir yang baru dimasukkan
+                        idPasien = perintahPasien.LastInsertedId;
+                    }
+
+                    // 2. Insert ke tabel `tbl_pendaftaran` menggunakan `id_pasien` baru
+                    string queryPendaftaran = "INSERT INTO tbl_pendaftaran (id_pasien, tanggal_daftar, status) " +
+                                              "VALUES (@id_pasien, @tanggal_daftar, 'terdaftar');";
+                    using (MySqlCommand perintahPendaftaran = new MySqlCommand(queryPendaftaran, koneksi))
+                    {
+                        // Tambahkan parameter untuk tbl_pendaftaran
+                        perintahPendaftaran.Parameters.AddWithValue("@id_pasien", idPasien);
+                        perintahPendaftaran.Parameters.AddWithValue("@tanggal_daftar", tglDaftar);
+
+                        // Eksekusi query untuk `tbl_pendaftaran`
+                        int resPendaftaran = perintahPendaftaran.ExecuteNonQuery();
+                        if (resPendaftaran == 1)
+                        {
+                            MessageBox.Show("Pendaftaran Sukses.");
+                            staffFrm_Load(null, null); // Refresh form jika diperlukan
+                        }
+                        else
+                        {
+                            MessageBox.Show("Gagal Insert Data Pendaftaran.");
+                        }
+                    }
+
                     koneksi.Close();
-                    if (res == 1)
-                    {
-                        MessageBox.Show("Insert Data Suksess ...");
-                        staffFrm_Load(null, null);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Gagal inser Data . . . ");
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Data Tidak lengkap !!");
+                    MessageBox.Show("Data Tidak Lengkap!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
             }
         }
+
+
 
         private void dateTglDaftar_ValueChanged(object sender, EventArgs e)
         {

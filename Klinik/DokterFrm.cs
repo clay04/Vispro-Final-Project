@@ -21,15 +21,21 @@ namespace Klinik
 
         private DataSet ds = new DataSet();
         private string alamat, query;
-        public DokterFrm()
+
+        private Form1 form1;
+
+        public DokterFrm(Form1 form1)
         {
             alamat = "server=localhost; database=db_klinik; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
 
             InitializeComponent();
 
+            this.form1 = form1;
+
             panelRekamMedis.Visible = false;
             panelRiwayatRekamMedis.Visible = false;
+            this.form1 = form1;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -258,6 +264,12 @@ namespace Klinik
         private void panelRiwayatRekamMedis_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            form1.Show();
         }
 
         private void btnRekamMedis_Click(object sender, EventArgs e)

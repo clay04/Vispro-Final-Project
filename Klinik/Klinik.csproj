@@ -61,6 +61,24 @@
     <Compile Include="AdminnFrm.Designer.cs">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DaftarDokteFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarDokteFrm.Designer.cs">
+      <DependentUpon>DaftarDokteFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaftarObat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarObat.Designer.cs">
+      <DependentUpon>DaftarObat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaftarStaffFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarStaffFrm.Designer.cs">
+      <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +110,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminnFrm.resx">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarDokteFrm.resx">
+      <DependentUpon>DaftarDokteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarObat.resx">
+      <DependentUpon>DaftarObat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarStaffFrm.resx">
+      <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffFrm.resx">
       <DependentUpon>StaffFrm.cs</DependentUpon>
@@ -133,6 +160,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo klinik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleDokter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Docter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\staff.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
