@@ -55,6 +55,72 @@ namespace Klinik
 
         }
 
+        private void load_data_2()
+        {
+            if (PanelObat.Visible)
+            {
+                try
+                {
+
+                    koneksi.Open();
+                    query = "SELECT * FROM tbl_obat";
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    dsO.Clear();
+                    adapter.Fill(dsO);
+                    koneksi.Close();
+
+                    dataGridView2.DataSource = dsO.Tables[0];
+
+                    dataGridView2.Columns[0].Width = 100;
+                    dataGridView2.Columns[1].Width = 150;
+                    dataGridView2.Columns[2].Width = 150;
+                    dataGridView2.Columns[3].Width = 150;
+                    dataGridView2.Columns[4].Width = 250;
+
+                    dataGridView2.Columns[0].Width = 100;
+                    dataGridView2.Columns[1].Width = 150;
+                    dataGridView2.Columns[2].Width = 150;
+                    dataGridView2.Columns[3].Width = 150;
+                    dataGridView2.Columns[4].Width = 250;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void load_data()
+        {
+            if (PanelDaftarPasien.Visible)
+            {
+                try
+                {
+                    koneksi.Open();
+                    query = "SELECT * FROM tbl_rekam_medis";
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    ds.Clear();
+                    adapter.Fill(ds);
+                    koneksi.Close();
+
+                    dataGridView4.DataSource = ds.Tables[0];
+
+                    dataGridView4.Columns[4].Width = 150;
+                    dataGridView4.Columns[5].Width = 100;
+                    dataGridView4.Columns[6].Width = 152;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
         private void btnDaftarPasien_Click(object sender, EventArgs e)
         {
             PanelRekam.Visible = false;
@@ -126,8 +192,8 @@ namespace Klinik
 
         private void btnDataRekamMedis_Click(object sender, EventArgs e)
         {
-            PanelDaftarPasien.Visible = false;
-            PanelRekam.Visible = true;
+            PanelDaftarPasien.Visible = true;
+            PanelRekam.Visible = false;
             PanelObat.Visible = false;
 
             if (PanelRekam.Visible)
@@ -269,7 +335,7 @@ namespace Klinik
 
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -327,9 +393,8 @@ namespace Klinik
             finally
             {
                 koneksi.Close();
+                load_data();
             }
-            PanelRekam.Visible = false;
-            PanelRekam.Visible = true;
         }
 
         private void LoadData()
@@ -443,13 +508,10 @@ namespace Klinik
                 LoadData(); // Refresh GridView
                 ClearForm(); // Membersihkan form
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
             finally
             {
                 koneksi.Close();
+                load_data();
             }
         }
 
@@ -473,18 +535,140 @@ namespace Klinik
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data berhasil dihapus!");
-                    LoadData(); // Refresh GridView
                     ClearForm(); // Membersihkan form
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
                 }
                 finally
                 {
                     koneksi.Close();
+                    load_data();
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                koneksi.Open();
+
+                // Reset auto increment jika diperlukan
+                string resetQuery = "ALTER TABLE tbl_obat AUTO_INCREMENT = 1";
+                MySqlCommand resetCmd = new MySqlCommand(resetQuery, koneksi);
+                resetCmd.ExecuteNonQuery();
+
+                string query = @"INSERT INTO tbl_obat 
+                (nama_obat, stock_obat, tanggal_restock,deskripsi_obat) 
+                VALUES 
+                (@nama_obat, @stock_obat, @tanggal_restock, @deskripsi_obat)";
+
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@nama_obat", textBox2.Text);
+                cmd.Parameters.AddWithValue("@stock_obat", textBox5.Text);
+                cmd.Parameters.AddWithValue("@tanggal_restock", tglRes.Value.Date);
+                cmd.Parameters.AddWithValue("@deskripsi_obat", textBox1.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil disimpan!");
+            }
+            finally
+            {
+                koneksi.Close();
+                load_data_2();
+            }
+        }
+
+        private void datagridview4_click(object sender, EventArgs e)
+        {
+            textBox6.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+
+            if (dataGridView2.CurrentRow.Cells[3].Value != null && dataGridView2.CurrentRow.Cells[2].Value != DBNull.Value)
+            {
+                if (dataGridView2.CurrentRow.Cells[3].Value is DateTime)
+                {
+                    tglRes.Value = (DateTime)dataGridView2.CurrentRow.Cells[3].Value;
+                }
+                else
+                {
+                    string dateStr = dataGridView2.CurrentRow.Cells[3].Value.ToString();
+                    DateTime tanggal;
+
+                    if (DateTime.TryParseExact(dateStr,
+                        new[] { "yyyy-MM-dd", "dd/MM/yyyy", "MM/dd/yyyy", "dd-MM-yyyy" },
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        System.Globalization.DateTimeStyles.None,
+                        out tanggal))
+                    {
+                        tglRes.Value = tanggal;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tidak dapat mengkonversi tanggal: " + dateStr);
+                    }
+                }
+            }
+
+            textBox2.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+            textBox5.Text = dataGridView2.CurrentRow.Cells[2].Value.ToString();
+            textBox1.Text = dataGridView2.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void tglRes_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                koneksi.Open();
+                string query = @"UPDATE tbl_obat SET 
+                        nama_obat = @nama_obat,
+                        stock_obat = @stock_obat,
+                        tanggal_restock = @tanggal_restock,
+                        deskripsi_obat= @deskripsi_obat
+                        WHERE id_obat= @id";
+
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@id", textBox6.Text);
+                cmd.Parameters.AddWithValue("@nama_obat", textBox2.Text);
+                cmd.Parameters.AddWithValue("@stock_obat", textBox5.Text);
+                cmd.Parameters.AddWithValue("@tanggal_restock", tglRes.Value.Date);
+                cmd.Parameters.AddWithValue("@deskripsi_obat", textBox1.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil diupdate!");
+
+            }
+            finally
+            {
+                koneksi.Close();
+                load_data_2();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                koneksi.Open();
+                string query = "DELETE FROM tbl_obat WHERE id_obat = @id";
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@id", textBox6.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil dihapus!");
+                ClearForm();
+            }
+            finally
+            {
+                koneksi.Close();
+                load_data_2();
+            }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void AdminnFrm_Load(object sender, EventArgs e)

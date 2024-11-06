@@ -32,6 +32,8 @@
             this.PanelDaftarPasien = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.CatatanT = new System.Windows.Forms.RichTextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.rwttxt = new System.Windows.Forms.Label();
             this.Resobat = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -45,6 +47,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
+            this.IDmedis = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.genertxt = new System.Windows.Forms.TextBox();
             this.genderTxt = new System.Windows.Forms.Label();
@@ -66,6 +69,23 @@
             this.btnDaftarPasien = new System.Windows.Forms.Button();
             this.btnDataRekamMedis = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.PanelObat = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.addObat = new System.Windows.Forms.Button();
+            this.tglRes = new System.Windows.Forms.DateTimePicker();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
             this.PanelRekam = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
@@ -79,22 +99,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label17 = new System.Windows.Forms.Label();
-            this.PanelObat = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.CatatanT = new System.Windows.Forms.RichTextBox();
-            this.IDmedis = new System.Windows.Forms.TextBox();
             this.PanelDaftarPasien.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -105,12 +109,12 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.PanelRekam.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.PanelObat.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.PanelRekam.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -172,6 +176,26 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(747, 332);
             this.panel5.TabIndex = 6;
+            // 
+            // CatatanT
+            // 
+            this.CatatanT.Location = new System.Drawing.Point(205, 208);
+            this.CatatanT.Name = "CatatanT";
+            this.CatatanT.Size = new System.Drawing.Size(243, 96);
+            this.CatatanT.TabIndex = 23;
+            this.CatatanT.Text = "";
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(498, 130);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(99, 43);
+            this.button7.TabIndex = 22;
+            this.button7.Text = "Delete";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // rwttxt
             // 
@@ -306,9 +330,18 @@
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(25, 25);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(142, 25);
+            this.label21.Size = new System.Drawing.Size(205, 25);
             this.label21.TabIndex = 0;
-            this.label21.Text = "Daftar Pasien";
+            this.label21.Text = "Daftar Rekam medis";
+            // 
+            // IDmedis
+            // 
+            this.IDmedis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDmedis.Location = new System.Drawing.Point(50, 150);
+            this.IDmedis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.IDmedis.Name = "IDmedis";
+            this.IDmedis.Size = new System.Drawing.Size(243, 34);
+            this.IDmedis.TabIndex = 24;
             // 
             // panel1
             // 
@@ -525,7 +558,7 @@
             this.btnDaftarPasien.Name = "btnDaftarPasien";
             this.btnDaftarPasien.Size = new System.Drawing.Size(353, 38);
             this.btnDaftarPasien.TabIndex = 7;
-            this.btnDaftarPasien.Text = "Daftar Pasien";
+            this.btnDaftarPasien.Text = "Daftar Rekam Medis";
             this.btnDaftarPasien.UseVisualStyleBackColor = true;
             this.btnDaftarPasien.Click += new System.EventHandler(this.btnDaftarPasien_Click);
             // 
@@ -538,7 +571,7 @@
             this.btnDataRekamMedis.Name = "btnDataRekamMedis";
             this.btnDataRekamMedis.Size = new System.Drawing.Size(353, 38);
             this.btnDataRekamMedis.TabIndex = 8;
-            this.btnDataRekamMedis.Text = "Data Rekam Medis";
+            this.btnDataRekamMedis.Text = "DaftarPasien\r\n";
             this.btnDataRekamMedis.UseVisualStyleBackColor = false;
             this.btnDataRekamMedis.Click += new System.EventHandler(this.btnDataRekamMedis_Click);
             // 
@@ -560,14 +593,204 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.PanelDaftarPasien);
             this.splitContainer1.Panel2.Controls.Add(this.PanelRekam);
             this.splitContainer1.Panel2.Controls.Add(this.PanelObat);
+            this.splitContainer1.Panel2.Controls.Add(this.PanelDaftarPasien);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(1651, 892);
             this.splitContainer1.SplitterDistance = 464;
             this.splitContainer1.TabIndex = 2;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // PanelObat
+            // 
+            this.PanelObat.Controls.Add(this.panel3);
+            this.PanelObat.Controls.Add(this.dataGridView2);
+            this.PanelObat.Controls.Add(this.label12);
+            this.PanelObat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelObat.Location = new System.Drawing.Point(0, 0);
+            this.PanelObat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PanelObat.Name = "PanelObat";
+            this.PanelObat.Size = new System.Drawing.Size(1183, 892);
+            this.PanelObat.TabIndex = 11;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.textBox6);
+            this.panel3.Controls.Add(this.label22);
+            this.panel3.Controls.Add(this.textBox5);
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.addObat);
+            this.panel3.Controls.Add(this.tglRes);
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Location = new System.Drawing.Point(29, 503);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1139, 324);
+            this.panel3.TabIndex = 6;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(845, 65);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(134, 34);
+            this.textBox6.TabIndex = 16;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(760, 68);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(32, 28);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "ID";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(845, 21);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(134, 34);
+            this.textBox5.TabIndex = 14;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(760, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(61, 28);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Stock";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(307, 242);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 43);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Delete";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(165, 242);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 43);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Update";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // addObat
+            // 
+            this.addObat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addObat.Location = new System.Drawing.Point(31, 242);
+            this.addObat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addObat.Name = "addObat";
+            this.addObat.Size = new System.Drawing.Size(99, 43);
+            this.addObat.TabIndex = 10;
+            this.addObat.Text = "ADD";
+            this.addObat.UseVisualStyleBackColor = true;
+            this.addObat.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // tglRes
+            // 
+            this.tglRes.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tglRes.Location = new System.Drawing.Point(216, 65);
+            this.tglRes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tglRes.Name = "tglRes";
+            this.tglRes.Size = new System.Drawing.Size(521, 34);
+            this.tglRes.TabIndex = 9;
+            this.tglRes.ValueChanged += new System.EventHandler(this.tglRes_ValueChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(216, 110);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(521, 119);
+            this.textBox1.TabIndex = 8;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(216, 21);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(521, 34);
+            this.textBox2.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(27, 113);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(142, 28);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Deskripsi obat";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(27, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 28);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Nama";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(27, 68);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(154, 28);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Tanggal restock";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(29, 69);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(1139, 400);
+            this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
+            this.dataGridView2.Click += new System.EventHandler(this.datagridview4_click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(25, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(123, 25);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Daftar Obat";
             // 
             // PanelRekam
             // 
@@ -699,6 +922,7 @@
             this.dataGridView3.RowTemplate.Height = 24;
             this.dataGridView3.Size = new System.Drawing.Size(1139, 400);
             this.dataGridView3.TabIndex = 1;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // label17
             // 
@@ -709,177 +933,6 @@
             this.label17.Size = new System.Drawing.Size(141, 25);
             this.label17.TabIndex = 0;
             this.label17.Text = "Rekam medis";
-            // 
-            // PanelObat
-            // 
-            this.PanelObat.Controls.Add(this.panel3);
-            this.PanelObat.Controls.Add(this.dataGridView2);
-            this.PanelObat.Controls.Add(this.label12);
-            this.PanelObat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelObat.Location = new System.Drawing.Point(0, 0);
-            this.PanelObat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PanelObat.Name = "PanelObat";
-            this.PanelObat.Size = new System.Drawing.Size(1183, 892);
-            this.PanelObat.TabIndex = 11;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Location = new System.Drawing.Point(29, 503);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(781, 324);
-            this.panel3.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(307, 242);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 43);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(165, 242);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 43);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(31, 242);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(99, 43);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(216, 65);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(521, 34);
-            this.dateTimePicker1.TabIndex = 9;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(216, 110);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(521, 105);
-            this.textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(216, 21);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(521, 34);
-            this.textBox2.TabIndex = 7;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(27, 113);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 28);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Deskripsi obat";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(27, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 28);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Nama";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(27, 68);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 28);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Tanggal restock";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(29, 69);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1139, 400);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(25, 25);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 25);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "obat";
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(498, 130);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(99, 43);
-            this.button7.TabIndex = 22;
-            this.button7.Text = "Delete";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // CatatanT
-            // 
-            this.CatatanT.Location = new System.Drawing.Point(205, 208);
-            this.CatatanT.Name = "CatatanT";
-            this.CatatanT.Size = new System.Drawing.Size(243, 96);
-            this.CatatanT.TabIndex = 23;
-            this.CatatanT.Text = "";
-            // 
-            // IDmedis
-            // 
-            this.IDmedis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDmedis.Location = new System.Drawing.Point(50, 150);
-            this.IDmedis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.IDmedis.Name = "IDmedis";
-            this.IDmedis.Size = new System.Drawing.Size(243, 34);
-            this.IDmedis.TabIndex = 24;
             // 
             // AdminnFrm
             // 
@@ -908,16 +961,16 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.PanelRekam.ResumeLayout(false);
-            this.PanelRekam.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.PanelObat.ResumeLayout(false);
             this.PanelObat.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.PanelRekam.ResumeLayout(false);
+            this.PanelRekam.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -946,8 +999,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button addObat;
+        private System.Windows.Forms.DateTimePicker tglRes;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
@@ -991,5 +1044,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.RichTextBox CatatanT;
         private System.Windows.Forms.TextBox IDmedis;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label20;
     }
 }
