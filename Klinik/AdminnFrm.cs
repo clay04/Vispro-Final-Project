@@ -302,13 +302,19 @@ namespace Klinik
             try
             {
                 koneksi.Open();
+
+                // Reset auto increment jika diperlukan
+                string resetQuery = "ALTER TABLE tbl_rekam_medis AUTO_INCREMENT = 1";
+                MySqlCommand resetCmd = new MySqlCommand(resetQuery, koneksi);
+                resetCmd.ExecuteNonQuery();
+
+                // Query insert seperti biasa
                 string query = @"INSERT INTO tbl_rekam_medis 
-                        (id_pasien, tanggal_periksa, diagnosa, pengobatan, resep_obat, catatan_tambahan) 
-                        VALUES 
-                        (@id_pasien, @tanggal, @diagnosa, @pengobatan, @resep, @catatan)";
+                (tanggal_periksa, diagnosa, pengobatan, resep_obat, catatan_tambahan) 
+                VALUES 
+                (@tanggal, @diagnosa, @pengobatan, @resep, @catatan)";
 
                 MySqlCommand cmd = new MySqlCommand(query, koneksi);
-                cmd.Parameters.AddWithValue("@id_pasien", IDmedis.Text);
                 cmd.Parameters.AddWithValue("@tanggal", tglperiksa.Value.Date);
                 cmd.Parameters.AddWithValue("@diagnosa", Diagnosa.Text);
                 cmd.Parameters.AddWithValue("@pengobatan", PengObatan.Text);
@@ -317,16 +323,13 @@ namespace Klinik
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil disimpan!");
-                LoadData(); // Refresh GridView
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
             }
             finally
             {
                 koneksi.Close();
             }
+            PanelRekam.Visible = false;
+            PanelRekam.Visible = true;
         }
 
         private void LoadData()
@@ -402,6 +405,86 @@ namespace Klinik
             PengObatan.Text = dataGridView4.CurrentRow.Cells[4].Value.ToString();
             Resobat.Text = dataGridView4.CurrentRow.Cells[5].Value.ToString();
             CatatanT.Text = dataGridView4.CurrentRow.Cells[6].Value.ToString();
+        }
+
+        private void ClearForm()
+        {
+            IDmedis.Clear();
+            tglperiksa.Value = DateTime.Now;
+            Diagnosa.Clear();
+            PengObatan.Clear();
+            Resobat.Clear();
+            CatatanT.Clear();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                koneksi.Open();
+                string query = @"UPDATE tbl_rekam_medis SET 
+                        tanggal_periksa = @tanggal,
+                        diagnosa = @diagnosa,
+                        pengobatan = @pengobatan,
+                        resep_obat = @resep,
+                        catatan_tambahan = @catatan
+                        WHERE id_Rekam_medis = @id";
+
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@id", IDmedis.Text);
+                cmd.Parameters.AddWithValue("@tanggal", tglperiksa.Value.Date);
+                cmd.Parameters.AddWithValue("@diagnosa", Diagnosa.Text);
+                cmd.Parameters.AddWithValue("@pengobatan", PengObatan.Text);
+                cmd.Parameters.AddWithValue("@resep", Resobat.Text);
+                cmd.Parameters.AddWithValue("@catatan", CatatanT.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil diupdate!");
+                LoadData(); // Refresh GridView
+                ClearForm(); // Membersihkan form
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(IDmedis.Text))
+            {
+                MessageBox.Show("Pilih data yang akan dihapus terlebih dahulu!");
+                return;
+            }
+
+            if (MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    koneksi.Open();
+                    string query = "DELETE FROM tbl_rekam_medis WHERE id_Rekam_medis = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                    cmd.Parameters.AddWithValue("@id", IDmedis.Text);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data berhasil dihapus!");
+                    LoadData(); // Refresh GridView
+                    ClearForm(); // Membersihkan form
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    koneksi.Close();
+                }
+            }
         }
 
         private void AdminnFrm_Load(object sender, EventArgs e)

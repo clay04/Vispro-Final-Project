@@ -32,7 +32,6 @@
             this.PanelDaftarPasien = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.CatatanT = new System.Windows.Forms.TextBox();
             this.rwttxt = new System.Windows.Forms.Label();
             this.Resobat = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -42,9 +41,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.tglperiksa = new System.Windows.Forms.DateTimePicker();
-            this.IDmedis = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
@@ -95,6 +92,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.CatatanT = new System.Windows.Forms.RichTextBox();
+            this.IDmedis = new System.Windows.Forms.TextBox();
             this.PanelDaftarPasien.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -144,6 +144,7 @@
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.dataGridView4);
             this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.IDmedis);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -154,6 +155,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.CatatanT);
+            this.panel5.Controls.Add(this.button7);
             this.panel5.Controls.Add(this.rwttxt);
             this.panel5.Controls.Add(this.Resobat);
             this.panel5.Controls.Add(this.label13);
@@ -163,30 +165,19 @@
             this.panel5.Controls.Add(this.button8);
             this.panel5.Controls.Add(this.button9);
             this.panel5.Controls.Add(this.tglperiksa);
-            this.panel5.Controls.Add(this.IDmedis);
             this.panel5.Controls.Add(this.label19);
-            this.panel5.Controls.Add(this.label20);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(19, 503);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(778, 332);
+            this.panel5.Size = new System.Drawing.Size(747, 332);
             this.panel5.TabIndex = 6;
-            // 
-            // CatatanT
-            // 
-            this.CatatanT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CatatanT.Location = new System.Drawing.Point(568, 26);
-            this.CatatanT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.CatatanT.Name = "CatatanT";
-            this.CatatanT.Size = new System.Drawing.Size(180, 34);
-            this.CatatanT.TabIndex = 21;
             // 
             // rwttxt
             // 
             this.rwttxt.AutoSize = true;
             this.rwttxt.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rwttxt.Location = new System.Drawing.Point(480, 28);
+            this.rwttxt.Location = new System.Drawing.Point(37, 201);
             this.rwttxt.Name = "rwttxt";
             this.rwttxt.Size = new System.Drawing.Size(80, 28);
             this.rwttxt.TabIndex = 20;
@@ -196,7 +187,7 @@
             // Resobat
             // 
             this.Resobat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Resobat.Location = new System.Drawing.Point(198, 194);
+            this.Resobat.Location = new System.Drawing.Point(205, 155);
             this.Resobat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Resobat.Name = "Resobat";
             this.Resobat.Size = new System.Drawing.Size(243, 34);
@@ -206,7 +197,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(27, 197);
+            this.label13.Location = new System.Drawing.Point(34, 158);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(113, 28);
             this.label13.TabIndex = 16;
@@ -215,7 +206,7 @@
             // PengObatan
             // 
             this.PengObatan.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PengObatan.Location = new System.Drawing.Point(198, 148);
+            this.PengObatan.Location = new System.Drawing.Point(205, 109);
             this.PengObatan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PengObatan.Name = "PengObatan";
             this.PengObatan.Size = new System.Drawing.Size(243, 34);
@@ -225,7 +216,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(27, 152);
+            this.label18.Location = new System.Drawing.Point(34, 113);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(121, 28);
             this.label18.TabIndex = 14;
@@ -234,7 +225,7 @@
             // Diagnosa
             // 
             this.Diagnosa.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Diagnosa.Location = new System.Drawing.Point(198, 107);
+            this.Diagnosa.Location = new System.Drawing.Point(205, 68);
             this.Diagnosa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Diagnosa.Name = "Diagnosa";
             this.Diagnosa.Size = new System.Drawing.Size(243, 34);
@@ -244,18 +235,19 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(166, 252);
+            this.button8.Location = new System.Drawing.Point(498, 80);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(99, 43);
             this.button8.TabIndex = 11;
             this.button8.Text = "Update";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(32, 252);
+            this.button9.Location = new System.Drawing.Point(498, 26);
             this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(99, 43);
@@ -267,48 +259,28 @@
             // tglperiksa
             // 
             this.tglperiksa.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tglperiksa.Location = new System.Drawing.Point(196, 67);
+            this.tglperiksa.Location = new System.Drawing.Point(205, 26);
             this.tglperiksa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tglperiksa.Name = "tglperiksa";
             this.tglperiksa.Size = new System.Drawing.Size(243, 34);
             this.tglperiksa.TabIndex = 9;
             this.tglperiksa.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
-            // IDmedis
-            // 
-            this.IDmedis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDmedis.Location = new System.Drawing.Point(198, 24);
-            this.IDmedis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.IDmedis.Name = "IDmedis";
-            this.IDmedis.Size = new System.Drawing.Size(243, 34);
-            this.IDmedis.TabIndex = 7;
-            this.IDmedis.TextChanged += new System.EventHandler(this.namaT_TextChanged);
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(27, 109);
+            this.label19.Location = new System.Drawing.Point(34, 70);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(96, 28);
             this.label19.TabIndex = 4;
             this.label19.Text = "Diagnosa";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(27, 28);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(93, 28);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "ID Medis";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(25, 70);
+            this.label8.Location = new System.Drawing.Point(32, 31);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(153, 28);
             this.label8.TabIndex = 5;
@@ -880,6 +852,35 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "obat";
             // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(498, 130);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(99, 43);
+            this.button7.TabIndex = 22;
+            this.button7.Text = "Delete";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // CatatanT
+            // 
+            this.CatatanT.Location = new System.Drawing.Point(205, 208);
+            this.CatatanT.Name = "CatatanT";
+            this.CatatanT.Size = new System.Drawing.Size(243, 96);
+            this.CatatanT.TabIndex = 23;
+            this.CatatanT.Text = "";
+            // 
+            // IDmedis
+            // 
+            this.IDmedis.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDmedis.Location = new System.Drawing.Point(50, 150);
+            this.IDmedis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.IDmedis.Name = "IDmedis";
+            this.IDmedis.Size = new System.Drawing.Size(243, 34);
+            this.IDmedis.TabIndex = 24;
+            // 
             // AdminnFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -982,13 +983,13 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.DateTimePicker tglperiksa;
-        private System.Windows.Forms.TextBox IDmedis;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox CatatanT;
         private System.Windows.Forms.Label rwttxt;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.RichTextBox CatatanT;
+        private System.Windows.Forms.TextBox IDmedis;
     }
 }
