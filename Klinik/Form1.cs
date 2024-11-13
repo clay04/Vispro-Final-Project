@@ -135,13 +135,15 @@ namespace Klinik
                             }
                             else if (CBUser.SelectedItem.ToString() == "Dokter")
                             {
-                                DokterFrm frmDoctor = new DokterFrm();
+                                DokterFrm frmDoctor = new DokterFrm(this);
                                 frmDoctor.Show();
+                                this.Hide();
                             }
                             else if (CBUser.SelectedItem.ToString() == "admin")
                             {
-                                AdminnFrm frmAdminn = new AdminnFrm();
+                                AdminnFrm frmAdminn = new AdminnFrm(this);
                                 frmAdminn.Show();
+                                this.Hide();
                             }
                         }
                         else

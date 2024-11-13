@@ -21,15 +21,21 @@ namespace Klinik
 
         private DataSet ds = new DataSet();
         private string alamat, query;
-        public DokterFrm()
+
+        private Form1 form1;
+
+        public DokterFrm(Form1 form1)
         {
             alamat = "server=localhost; database=db_klinik; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
 
             InitializeComponent();
 
+            this.form1 = form1;
+
             panelRekamMedis.Visible = false;
             panelRiwayatRekamMedis.Visible = false;
+            this.form1 = form1;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -108,6 +114,7 @@ namespace Klinik
 
         private void DokterFrm_Load(object sender, EventArgs e)
         {
+            LoadNamaObat();
             cardRekamMedis.Paint += new PaintEventHandler(cardRekamMedis_Paint);
 
             try
@@ -115,11 +122,13 @@ namespace Klinik
                 // Membuka koneksi
                 koneksi.Open();
 
-                // Query untuk mengambil data dari tabel tbl_rekam_medis dan tbl_pasien
+                // Query untuk mengambil data dari tabel tbl_rekam_medis, tbl_pasien, resep_obat, dan tbl_obat
                 query = "SELECT rm.id_rekam_medis, rm.id_pasien, p.nama_pasien, rm.tanggal_periksa, " +
-                        "rm.diagnosa, rm.pengobatan, rm.resep_obat, rm.catatan_tambahan " +
+                        "rm.diagnosa, rm.catatan_tambahan, ro.id_resep, ro.id_obat, o.nama_obat, ro.dosis, ro.cara_pakai, ro.jumlah, ro.keterangan " +
                         "FROM tbl_rekam_medis rm " +
-                        "INNER JOIN tbl_pasien p ON rm.id_pasien = p.id_pasien";
+                        "INNER JOIN tbl_pasien p ON rm.id_pasien = p.id_pasien " +
+                        "LEFT JOIN resep_obat ro ON rm.id_pasien = ro.id_pasien " +
+                        "LEFT JOIN tbl_obat o ON ro.id_obat = o.id_obat";
 
                 // Menjalankan query
                 perintah = new MySqlCommand(query, koneksi);
@@ -140,9 +149,14 @@ namespace Klinik
                 dataGridView1.Columns[2].HeaderText = "Nama Pasien";
                 dataGridView1.Columns[3].HeaderText = "Tanggal Periksa";
                 dataGridView1.Columns[4].HeaderText = "Diagnosa";
-                dataGridView1.Columns[5].HeaderText = "Pengobatan";
-                dataGridView1.Columns[6].HeaderText = "Resep Obat";
-                dataGridView1.Columns[7].HeaderText = "Catatan Tambahan";
+                dataGridView1.Columns[5].HeaderText = "Catatan Tambahan";
+                dataGridView1.Columns[6].HeaderText = "ID Resep";
+                dataGridView1.Columns[7].HeaderText = "ID Obat";
+                dataGridView1.Columns[8].HeaderText = "Nama Obat";
+                dataGridView1.Columns[9].HeaderText = "Dosis";
+                dataGridView1.Columns[10].HeaderText = "Cara Pakai";
+                dataGridView1.Columns[11].HeaderText = "Jumlah";
+                dataGridView1.Columns[12].HeaderText = "Keterangan";
 
                 // Atur lebar kolom sesuai kebutuhan
                 dataGridView1.Columns[0].Width = 120; // ID Rekam Medis
@@ -150,9 +164,14 @@ namespace Klinik
                 dataGridView1.Columns[2].Width = 150; // Nama Pasien
                 dataGridView1.Columns[3].Width = 120; // Tanggal Periksa
                 dataGridView1.Columns[4].Width = 200; // Diagnosa
-                dataGridView1.Columns[5].Width = 200; // Pengobatan
-                dataGridView1.Columns[6].Width = 200; // Resep Obat
-                dataGridView1.Columns[7].Width = 250; // Catatan Tambahan
+                dataGridView1.Columns[5].Width = 200; // Catatan Tambahan
+                dataGridView1.Columns[6].Width = 100; // ID Resep
+                dataGridView1.Columns[7].Width = 100; // ID Obat
+                dataGridView1.Columns[8].Width = 150; // Nama Obat
+                dataGridView1.Columns[9].Width = 150; // Dosis
+                dataGridView1.Columns[10].Width = 150; // Cara Pakai
+                dataGridView1.Columns[11].Width = 100; // Jumlah
+                dataGridView1.Columns[12].Width = 200; // Keterangan
 
                 // Tutup koneksi
                 koneksi.Close();
@@ -165,7 +184,6 @@ namespace Klinik
                     koneksi.Close();
                 }
             }
-
         }
 
         private void cardRekamMedis_Paint(object sender, PaintEventArgs e)
@@ -192,38 +210,72 @@ namespace Klinik
         {
             try
             {
-                // Cek apakah form rekam medis sudah diisi
-                if (txtIDPasien.Text != "" && txtNamaPasien.Text != "" && dateTanggalPeriksa.Text != "" && txtDiagnosa.Text != "" && txtPengobatan.Text != "" && txtResepObat.Text != "")
+                if (txtIDPasien.Text != "" && txtNamaPasien.Text != "" && txtRiwayatPenyakit.Text != "" &&
+                    txtIDRekamMedis.Text != "" && dateTanggalPeriksa.Text != "" && txtDiagnosa.Text != "" &&
+                    txtCatatanTambahan.Text != "" && txtIDResepObat.Text != "" && txtIDObat.Text != "" &&
+                    cbNamaObat.Text != "" && txtDosis.Text != "" && txtCaraPakai.Text != "" &&
+                    txtJumlah.Text != "" && txtKeterangan.Text != "")
                 {
-                    // Query untuk insert data ke rekam medis
-                    string insertQuery = string.Format(
-                        "INSERT INTO tbl_rekam_medis (id_pasien, tanggal_periksa, diagnosa, pengobatan, resep_obat, catatan_tambahan) " +
-                        "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
-                        txtIDPasien.Text,
-                        dateTanggalPeriksa.Value.ToString("yyyy-MM-dd"),
-                        txtDiagnosa.Text,
-                        txtPengobatan.Text,
-                        txtResepObat.Text,
-                        txtCatatanTambahan.Text);
+                    if (!ValidateData())
+                    {
+                        return;
+                    }
 
                     koneksi.Open();
-                    perintah = new MySqlCommand(insertQuery, koneksi);
-                    int res = perintah.ExecuteNonQuery();
-                    koneksi.Close();
 
-                    if (res == 1)
+                    // 1. Insert ke tabel rekam_medis
+                    string queryRekamMedis = @"INSERT INTO tbl_rekam_medis 
+                (id_pasien, tanggal_periksa, diagnosa, catatan_tambahan) 
+                VALUES (@id_pasien, @tanggal_periksa, @diagnosa, @catatan_tambahan)";
+
+                    using (MySqlCommand perintahRekamMedis = new MySqlCommand(queryRekamMedis, koneksi))
                     {
-                        MessageBox.Show("Data rekam medis berhasil disimpan!");
-                        ClearForm(); // Method untuk mengosongkan input form
+                        perintahRekamMedis.Parameters.AddWithValue("@id_pasien", txtIDPasien.Text);
+                        perintahRekamMedis.Parameters.AddWithValue("@tanggal_periksa", dateTanggalPeriksa.Value);
+                        perintahRekamMedis.Parameters.AddWithValue("@diagnosa", txtDiagnosa.Text);
+                        perintahRekamMedis.Parameters.AddWithValue("@catatan_tambahan", txtCatatanTambahan.Text);
+
+                        int resRekamMedis = perintahRekamMedis.ExecuteNonQuery();
+                        if (resRekamMedis != 1)
+                        {
+                            MessageBox.Show("Gagal Insert Data Rekam Medis.");
+                            koneksi.Close();
+                            return;
+                        }
                     }
-                    else
+
+                    // 2. Insert ke tabel resep_obat
+                    string queryResepObat = @"INSERT INTO resep_obat 
+                (id_obat, id_pasien, dosis, cara_pakai, jumlah, keterangan, id_rekam_medis)
+                VALUES (@id_obat, @id_pasien, @dosis, @cara_pakai, @jumlah, @keterangan, @id_rekam_medis)";
+
+                    using (MySqlCommand perintahResepObat = new MySqlCommand(queryResepObat, koneksi))
                     {
-                        MessageBox.Show("Gagal menyimpan data rekam medis.");
+                        perintahResepObat.Parameters.AddWithValue("@id_obat", txtIDObat.Text);
+                        perintahResepObat.Parameters.AddWithValue("@id_pasien", txtIDPasien.Text);
+                        perintahResepObat.Parameters.AddWithValue("@dosis", txtDosis.Text);
+                        perintahResepObat.Parameters.AddWithValue("@cara_pakai", txtCaraPakai.Text);
+                        perintahResepObat.Parameters.AddWithValue("@jumlah", txtJumlah.Text);
+                        perintahResepObat.Parameters.AddWithValue("@keterangan", txtKeterangan.Text);
+                        perintahResepObat.Parameters.AddWithValue("@id_rekam_medis", txtIDRekamMedis.Text);
+
+                        int resResepObat = perintahResepObat.ExecuteNonQuery();
+                        if (resResepObat == 1)
+                        {
+                            MessageBox.Show("Data berhasil disimpan.");
+                            DokterFrm_Load(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Gagal Insert Data Resep Obat.");
+                        }
                     }
+
+                    koneksi.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Form rekam medis tidak lengkap.");
+                    MessageBox.Show("Data Tidak Lengkap!");
                 }
             }
             catch (Exception ex)
@@ -234,8 +286,92 @@ namespace Klinik
                     koneksi.Close();
                 }
             }
-
         }
+
+        // Tambahkan method ini
+        private bool ValidateData()
+        {
+            try
+            {
+                using (MySqlCommand cmd = koneksi.CreateCommand())
+                {
+                    // Cek apakah ID Pasien ada
+                    cmd.CommandText = "SELECT COUNT(*) FROM tbl_pasien WHERE id_pasien = @id_pasien";
+                    cmd.Parameters.AddWithValue("@id_pasien", txtIDPasien.Text);
+                    koneksi.Open();
+                    int pasienCount = Convert.ToInt32(cmd.ExecuteScalar());
+                    koneksi.Close();
+
+                    if (pasienCount == 0)
+                    {
+                        MessageBox.Show("ID Pasien tidak ditemukan!");
+                        return false;
+                    }
+
+                    // Cek apakah ID Obat ada
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "SELECT COUNT(*) FROM tbl_obat WHERE id_obat = @id_obat";
+                    cmd.Parameters.AddWithValue("@id_obat", txtIDObat.Text);
+                    koneksi.Open();
+                    int obatCount = Convert.ToInt32(cmd.ExecuteScalar());
+                    koneksi.Close();
+
+                    if (obatCount == 0)
+                    {
+                        MessageBox.Show("ID Obat tidak ditemukan!");
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validasi: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                    koneksi.Close();
+            }
+        }
+
+        private void LoadNamaObat()
+        {
+            try
+            {
+                MessageBox.Show("Memulai pengisian ComboBox...");
+                string query = "SELECT nama_obat FROM tbl_obat";
+                MySqlCommand perintah = new MySqlCommand(query, koneksi);
+
+                koneksi.Open();
+                MySqlDataReader reader = perintah.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cbNamaObat.Items.Add(reader["nama_obat"].ToString());
+                }
+
+                koneksi.Close();
+                MessageBox.Show("Pengisian ComboBox selesai.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
+        }
+
+        // Panggil metode ini di event Form_Load atau saat form diinisialisasi
+        private void Form_Load(object sender, EventArgs e)
+        {
+            LoadNamaObat();
+        }
+
 
         private void ClearForm()
         {
@@ -244,8 +380,6 @@ namespace Klinik
             txtRiwayatPenyakit.Clear();
             dateTanggalPeriksa.Value = DateTime.Now;
             txtDiagnosa.Clear();
-            txtPengobatan.Clear();
-            txtResepObat.Clear();
             txtCatatanTambahan.Clear();
         }
 
@@ -256,6 +390,17 @@ namespace Klinik
         }
 
         private void panelRiwayatRekamMedis_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            form1.Show();
+        }
+
+        private void txtRiwayatPenyakit_TextChanged(object sender, EventArgs e)
         {
 
         }
