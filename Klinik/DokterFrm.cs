@@ -246,8 +246,8 @@ namespace Klinik
 
                     // 2. Insert ke tabel resep_obat
                     string queryResepObat = @"INSERT INTO resep_obat 
-                (id_obat, id_pasien, dosis, cara_pakai, jumlah, keterangan) 
-                VALUES (@id_obat, @id_pasien, @dosis, @cara_pakai, @jumlah, @keterangan)";
+                (id_obat, id_pasien, dosis, cara_pakai, jumlah, keterangan, id_rekam_medis)
+                VALUES (@id_obat, @id_pasien, @dosis, @cara_pakai, @jumlah, @keterangan, @id_rekam_medis)";
 
                     using (MySqlCommand perintahResepObat = new MySqlCommand(queryResepObat, koneksi))
                     {
@@ -257,6 +257,7 @@ namespace Klinik
                         perintahResepObat.Parameters.AddWithValue("@cara_pakai", txtCaraPakai.Text);
                         perintahResepObat.Parameters.AddWithValue("@jumlah", txtJumlah.Text);
                         perintahResepObat.Parameters.AddWithValue("@keterangan", txtKeterangan.Text);
+                        perintahResepObat.Parameters.AddWithValue("@id_rekam_medis", txtIDRekamMedis.Text);
 
                         int resResepObat = perintahResepObat.ExecuteNonQuery();
                         if (resResepObat == 1)

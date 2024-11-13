@@ -491,51 +491,55 @@ namespace Klinik
                 FormatDataGridView(dataGridView2, new string[] { "ID Obat", "Nama Obat", "Kategori", "Tanggal Kadaluarsa", "Harga Obat", "Jumlah", "Jenis Obat" });
 
                 // Load Rekam Medis Data
-                string queryRekamMedis = @"SELECT 
-                            rm.id_rekam_medis, 
-                            rm.id_pasien, 
-                            p.nama_pasien, 
-                            rm.tanggal_periksa, 
-                            rm.diagnosa, 
-                            rm.catatan_tambahan, 
-                            ro.id_obat, 
-                            ro.dosis, 
-                            o.nama_obat, 
-                            ro.cara_pakai, 
-                            ro.jumlah, 
-                            ro.keterangan 
-                        FROM 
-                            tbl_rekam_medis rm 
-                        INNER JOIN 
-                            tbl_pasien p ON rm.id_pasien = p.id_pasien 
-                        LEFT JOIN 
-                            resep_obat ro ON rm.id_rekam_medis = ro.id_resep
-                        LEFT JOIN 
-                            tbl_obat o ON ro.id_obat = o.id_obat";
+                query = "SELECT rm.id_rekam_medis, rm.id_pasien, p.nama_pasien, rm.tanggal_periksa, " +
+                        "rm.diagnosa, rm.catatan_tambahan, ro.id_resep, ro.id_obat, o.nama_obat, ro.dosis, ro.cara_pakai, ro.jumlah, ro.keterangan " +
+                        "FROM tbl_rekam_medis rm " +
+                        "INNER JOIN tbl_pasien p ON rm.id_pasien = p.id_pasien " +
+                        "LEFT JOIN resep_obat ro ON rm.id_pasien = ro.id_pasien " +
+                        "LEFT JOIN tbl_obat o ON ro.id_obat = o.id_obat";
 
-                MySqlCommand perintahRekamMedis = new MySqlCommand(queryRekamMedis, koneksi);
-                MySqlDataAdapter adapterRekamMedis = new MySqlDataAdapter(perintahRekamMedis);
-                DataSet dsRekamMedis = new DataSet();
-                adapterRekamMedis.Fill(dsRekamMedis);
+                // Menjalankan query
+                perintah = new MySqlCommand(query, koneksi);
+                adapter = new MySqlDataAdapter(perintah);
 
-                // Menampilkan data di dataGridView
-                dataGridView3.DataSource = dsRekamMedis.Tables[0];
+                // Clear dataset jika sudah ada data sebelumnya
+                ds.Clear();
 
-                // Mengatur header DataGridView
-                FormatDataGridView(dataGridView3, new string[] {
-                    "ID Rekam Medis",
-                    "ID Pasien",
-                    "Nama Pasien",
-                    "Tanggal Periksa",
-                    "Diagnosa",
-                    "Catatan Tambahan",
-                    "ID Obat",
-                    "Dosis",
-                    "Nama Obat",
-                    "Cara Pakai",
-                    "Jumlah",
-                    "Keterangan"
-                });
+                // Isi dataset dengan hasil query
+                adapter.Fill(ds);
+
+                // Tampilkan data ke dalam DataGridView
+                dataGridView3.DataSource = ds.Tables[0];
+
+                // Set kolom DataGridView
+                dataGridView3.Columns[0].HeaderText = "ID Rekam Medis";
+                dataGridView3.Columns[1].HeaderText = "ID Pasien";
+                dataGridView3.Columns[2].HeaderText = "Nama Pasien";
+                dataGridView3.Columns[3].HeaderText = "Tanggal Periksa";
+                dataGridView3.Columns[4].HeaderText = "Diagnosa";
+                dataGridView3.Columns[5].HeaderText = "Catatan Tambahan";
+                dataGridView3.Columns[6].HeaderText = "ID Resep";
+                dataGridView3.Columns[7].HeaderText = "ID Obat";
+                dataGridView3.Columns[8].HeaderText = "Nama Obat";
+                dataGridView3.Columns[9].HeaderText = "Dosis";
+                dataGridView3.Columns[10].HeaderText = "Cara Pakai";
+                dataGridView3.Columns[11].HeaderText = "Jumlah";
+                dataGridView3.Columns[12].HeaderText = "Keterangan";
+
+                // Atur lebar kolom sesuai kebutuhan
+                dataGridView3.Columns[0].Width = 120; // ID Rekam Medis
+                dataGridView3.Columns[1].Width = 100; // ID Pasien
+                dataGridView3.Columns[2].Width = 150; // Nama Pasien
+                dataGridView3.Columns[3].Width = 120; // Tanggal Periksa
+                dataGridView3.Columns[4].Width = 200; // Diagnosa
+                dataGridView3.Columns[5].Width = 200; // Catatan Tambahan
+                dataGridView3.Columns[6].Width = 100; // ID Resep
+                dataGridView3.Columns[7].Width = 100; // ID Obat
+                dataGridView3.Columns[8].Width = 150; // Nama Obat
+                dataGridView3.Columns[9].Width = 150; // Dosis
+                dataGridView3.Columns[10].Width = 150; // Cara Pakai
+                dataGridView3.Columns[11].Width = 100; // Jumlah
+                dataGridView3.Columns[12].Width = 200; // Keterangan
 
             }
             catch (Exception ex)
@@ -779,6 +783,61 @@ namespace Klinik
             ReportDataPasien reportDataPasien = new ReportDataPasien();
             reportDataPasien.Show();
         }
+
+        private void btnPrintDaftarRekamMedis_Click(object sender, EventArgs e)
+        {
+            FrmDaftarRekamMedis frmDaftarRekamMedis = new FrmDaftarRekamMedis();
+            frmDaftarRekamMedis.Show();
+        }
+
+        private void btnPrintDaftarObat_Click(object sender, EventArgs e)
+        {
+            FrmDaftarObat frmDaftarObat = new FrmDaftarObat();
+            frmDaftarObat.Show();
+        }
+
+        private void dataviewobat(object sender, EventArgs e)
+        {
+            txtIDObat.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+
+            if (dataGridView2.CurrentRow.Cells[3].Value != null && dataGridView2.CurrentRow.Cells[2].Value != DBNull.Value)
+            {
+                if (dataGridView2.CurrentRow.Cells[3].Value is DateTime)
+                {
+                    dateTanggalKadaluarsaObat.Value = (DateTime)dataGridView2.CurrentRow.Cells[3].Value;
+                }
+                else
+                {
+                    string dateStr = dataGridView2.CurrentRow.Cells[3].Value.ToString();
+                    DateTime tanggal;
+
+                    if (DateTime.TryParseExact(dateStr,
+                        new[] { "yyyy-MM-dd", "dd/MM/yyyy", "MM/dd/yyyy", "dd-MM-yyyy" },
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        System.Globalization.DateTimeStyles.None,
+                        out tanggal))
+                    {
+                        dateTanggalKadaluarsaObat.Value = tanggal;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tidak dapat mengkonversi tanggal: " + dateStr);
+                    }
+                }
+            }
+
+
+            txtNamaObat.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+            txtKategoriObat.Text = dataGridView2.CurrentRow.Cells[2].Value.ToString();
+            txtHargaObat.Text = dataGridView2.CurrentRow.Cells[4].Value.ToString();
+            txtJumlahObat.Text = dataGridView2.CurrentRow.Cells[5].Value.ToString();
+            txtJenisObat.Text = dataGridView2.CurrentRow.Cells[6].Value.ToString();
+        }
+
+
+
+
+
 
         private void TampilkanJumlahTenagaKerja()
         {

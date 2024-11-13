@@ -67,6 +67,24 @@
     <Compile Include="AdminnFrm.Designer.cs">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDaftarObat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDaftarObat.Designer.cs">
+      <DependentUpon>FrmDaftarObat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResportDaftarObat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResportDaftarObat.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DaftarRekamMedis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DaftarRekamMedis.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataPasien.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +108,12 @@
     </Compile>
     <Compile Include="DaftarStaffFrm.Designer.cs">
       <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDaftarRekamMedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDaftarRekamMedis.Designer.cs">
+      <DependentUpon>FrmDaftarRekamMedis.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportDataPasien.cs">
       <SubType>Form</SubType>
@@ -141,6 +165,17 @@
     <EmbeddedResource Include="AdminnFrm.resx">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDaftarObat.resx">
+      <DependentUpon>FrmDaftarObat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResportDaftarObat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ResportDaftarObat.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarRekamMedis.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DaftarRekamMedis.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataPasien.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DataPasien.cs</LastGenOutput>
@@ -153,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DaftarStaffFrm.resx">
       <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDaftarRekamMedis.resx">
+      <DependentUpon>FrmDaftarRekamMedis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportDataPasien.resx">
       <DependentUpon>ReportDataPasien.cs</DependentUpon>

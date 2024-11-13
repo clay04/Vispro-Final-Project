@@ -34,7 +34,7 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPendaftaran = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelPembayaran = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnSavePembayaran = new System.Windows.Forms.Button();
             this.cbStatusPembayaran = new System.Windows.Forms.ComboBox();
@@ -80,7 +80,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panelPembayaran.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelPendaftaran.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -116,8 +116,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.panelPendaftaran);
+            this.splitContainer1.Panel2.Controls.Add(this.panelPembayaran);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1828, 1000);
             this.splitContainer1.SplitterDistance = 356;
@@ -173,15 +173,15 @@
             this.btnPendaftaran.UseVisualStyleBackColor = true;
             this.btnPendaftaran.Click += new System.EventHandler(this.btnPendaftaran_Click);
             // 
-            // panel2
+            // panelPembayaran
             // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1471, 1000);
-            this.panel2.TabIndex = 22;
+            this.panelPembayaran.Controls.Add(this.panel3);
+            this.panelPembayaran.Controls.Add(this.label2);
+            this.panelPembayaran.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPembayaran.Location = new System.Drawing.Point(0, 0);
+            this.panelPembayaran.Name = "panelPembayaran";
+            this.panelPembayaran.Size = new System.Drawing.Size(1471, 1000);
+            this.panelPembayaran.TabIndex = 22;
             // 
             // panel3
             // 
@@ -648,8 +648,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelPembayaran.ResumeLayout(false);
+            this.panelPembayaran.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panelPendaftaran.ResumeLayout(false);
@@ -690,7 +690,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbNamaDokter;
         private System.Windows.Forms.Button btnPembayaran;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelPembayaran;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtNamaPasienPembayaran;
         private System.Windows.Forms.Label label2;
