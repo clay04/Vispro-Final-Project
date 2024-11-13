@@ -491,18 +491,52 @@ namespace Klinik
                 FormatDataGridView(dataGridView2, new string[] { "ID Obat", "Nama Obat", "Kategori", "Tanggal Kadaluarsa", "Harga Obat", "Jumlah", "Jenis Obat" });
 
                 // Load Rekam Medis Data
-                string queryRekamMedis = @"SELECT rm.id_rekam_medis, rm.id_pasien, p.nama_pasien, rm.tanggal_periksa, 
-                                   rm.diagnosa, rm.pengobatan, rm.resep_obat, rm.catatan_tambahan 
-                                   FROM tbl_rekam_medis rm 
-                                   INNER JOIN tbl_pasien p ON rm.id_pasien = p.id_pasien";
+                string queryRekamMedis = @"SELECT 
+                            rm.id_rekam_medis, 
+                            rm.id_pasien, 
+                            p.nama_pasien, 
+                            rm.tanggal_periksa, 
+                            rm.diagnosa, 
+                            rm.catatan_tambahan, 
+                            ro.id_obat, 
+                            ro.dosis, 
+                            o.nama_obat, 
+                            ro.cara_pakai, 
+                            ro.jumlah, 
+                            ro.keterangan 
+                        FROM 
+                            tbl_rekam_medis rm 
+                        INNER JOIN 
+                            tbl_pasien p ON rm.id_pasien = p.id_pasien 
+                        LEFT JOIN 
+                            resep_obat ro ON rm.id_rekam_medis = ro.id_resep
+                        LEFT JOIN 
+                            tbl_obat o ON ro.id_obat = o.id_obat";
 
                 MySqlCommand perintahRekamMedis = new MySqlCommand(queryRekamMedis, koneksi);
                 MySqlDataAdapter adapterRekamMedis = new MySqlDataAdapter(perintahRekamMedis);
                 DataSet dsRekamMedis = new DataSet();
                 adapterRekamMedis.Fill(dsRekamMedis);
 
+                // Menampilkan data di dataGridView
                 dataGridView3.DataSource = dsRekamMedis.Tables[0];
-                FormatDataGridView(dataGridView3, new string[] { "ID Rekam Medis", "ID Pasien", "Nama Pasien", "Tanggal Periksa", "Diagnosa", "Pengobatan", "Resep Obat", "Catatan Tambahan" });
+
+                // Mengatur header DataGridView
+                FormatDataGridView(dataGridView3, new string[] {
+                    "ID Rekam Medis",
+                    "ID Pasien",
+                    "Nama Pasien",
+                    "Tanggal Periksa",
+                    "Diagnosa",
+                    "Catatan Tambahan",
+                    "ID Obat",
+                    "Dosis",
+                    "Nama Obat",
+                    "Cara Pakai",
+                    "Jumlah",
+                    "Keterangan"
+                });
+
             }
             catch (Exception ex)
             {
@@ -732,6 +766,18 @@ namespace Klinik
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnPrintDaftarPasien_Click(object sender, EventArgs e)
+        {
+            ResportDaftarPasien resportDaftarPasien = new ResportDaftarPasien();
+            resportDaftarPasien.Show();
+        }
+
+        private void btnPrintDataPasien_Click(object sender, EventArgs e)
+        {
+            ReportDataPasien reportDataPasien = new ReportDataPasien();
+            reportDataPasien.Show();
         }
 
         private void TampilkanJumlahTenagaKerja()

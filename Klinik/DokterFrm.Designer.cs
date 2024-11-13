@@ -29,19 +29,34 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnRiwayatRekamMedis = new System.Windows.Forms.Button();
             this.btnRekamMedis = new System.Windows.Forms.Button();
+            this.panelRiwayatRekamMedis = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelRekamMedis = new System.Windows.Forms.Panel();
             this.cardRekamMedis = new System.Windows.Forms.Panel();
+            this.cbNamaObat = new System.Windows.Forms.ComboBox();
+            this.txtKeterangan = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtJumlah = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtCaraPakai = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtDosis = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtIDObat = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtIDResepObat = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.dateTanggalPeriksa = new System.Windows.Forms.DateTimePicker();
             this.txtCatatanTambahan = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtResepObat = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtPengobatan = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtDiagnosa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,19 +71,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtIDPasien = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.panelRiwayatRekamMedis = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panelRekamMedis.SuspendLayout();
-            this.cardRekamMedis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelRiwayatRekamMedis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panelRekamMedis.SuspendLayout();
+            this.cardRekamMedis.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -90,17 +101,27 @@
             this.splitContainer1.Panel2.Controls.Add(this.panelRekamMedis);
             this.splitContainer1.Panel2.Controls.Add(this.panelRiwayatRekamMedis);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1867, 833);
+            this.splitContainer1.Size = new System.Drawing.Size(1867, 1055);
             this.splitContainer1.SplitterDistance = 350;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Klinik.Properties.Resources.logo_klinik;
+            this.pictureBox3.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(140, 133);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Red;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogout.Location = new System.Drawing.Point(12, 707);
+            this.btnLogout.Location = new System.Drawing.Point(12, 847);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(286, 52);
@@ -129,10 +150,41 @@
             this.btnRekamMedis.Name = "btnRekamMedis";
             this.btnRekamMedis.Size = new System.Drawing.Size(286, 38);
             this.btnRekamMedis.TabIndex = 1;
-            this.btnRekamMedis.Text = "Rekam Medis\r\n";
+            this.btnRekamMedis.Text = "Pemeriksaan";
             this.btnRekamMedis.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRekamMedis.UseVisualStyleBackColor = true;
             this.btnRekamMedis.Click += new System.EventHandler(this.btnRekamMedis_Click);
+            // 
+            // panelRiwayatRekamMedis
+            // 
+            this.panelRiwayatRekamMedis.Controls.Add(this.label13);
+            this.panelRiwayatRekamMedis.Controls.Add(this.dataGridView1);
+            this.panelRiwayatRekamMedis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRiwayatRekamMedis.Location = new System.Drawing.Point(0, 0);
+            this.panelRiwayatRekamMedis.Name = "panelRiwayatRekamMedis";
+            this.panelRiwayatRekamMedis.Size = new System.Drawing.Size(1513, 1055);
+            this.panelRiwayatRekamMedis.TabIndex = 1;
+            this.panelRiwayatRekamMedis.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRiwayatRekamMedis_Paint);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(30, 107);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(305, 38);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Riwayat Rekam Medis";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(37, 171);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1445, 383);
+            this.dataGridView1.TabIndex = 0;
             // 
             // panelRekamMedis
             // 
@@ -140,21 +192,33 @@
             this.panelRekamMedis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRekamMedis.Location = new System.Drawing.Point(0, 0);
             this.panelRekamMedis.Name = "panelRekamMedis";
-            this.panelRekamMedis.Size = new System.Drawing.Size(1513, 833);
+            this.panelRekamMedis.Size = new System.Drawing.Size(1513, 1055);
             this.panelRekamMedis.TabIndex = 0;
             this.panelRekamMedis.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRekamMedis_Paint);
             // 
             // cardRekamMedis
             // 
+            this.cardRekamMedis.AutoScroll = true;
             this.cardRekamMedis.BackColor = System.Drawing.Color.White;
+            this.cardRekamMedis.Controls.Add(this.cbNamaObat);
+            this.cardRekamMedis.Controls.Add(this.txtKeterangan);
+            this.cardRekamMedis.Controls.Add(this.label18);
+            this.cardRekamMedis.Controls.Add(this.txtJumlah);
+            this.cardRekamMedis.Controls.Add(this.label17);
+            this.cardRekamMedis.Controls.Add(this.txtCaraPakai);
+            this.cardRekamMedis.Controls.Add(this.label16);
+            this.cardRekamMedis.Controls.Add(this.txtDosis);
+            this.cardRekamMedis.Controls.Add(this.label15);
+            this.cardRekamMedis.Controls.Add(this.label14);
+            this.cardRekamMedis.Controls.Add(this.txtIDObat);
+            this.cardRekamMedis.Controls.Add(this.label11);
+            this.cardRekamMedis.Controls.Add(this.txtIDResepObat);
+            this.cardRekamMedis.Controls.Add(this.label10);
+            this.cardRekamMedis.Controls.Add(this.label1);
             this.cardRekamMedis.Controls.Add(this.btnSave);
             this.cardRekamMedis.Controls.Add(this.dateTanggalPeriksa);
             this.cardRekamMedis.Controls.Add(this.txtCatatanTambahan);
             this.cardRekamMedis.Controls.Add(this.label12);
-            this.cardRekamMedis.Controls.Add(this.txtResepObat);
-            this.cardRekamMedis.Controls.Add(this.label11);
-            this.cardRekamMedis.Controls.Add(this.txtPengobatan);
-            this.cardRekamMedis.Controls.Add(this.label10);
             this.cardRekamMedis.Controls.Add(this.txtDiagnosa);
             this.cardRekamMedis.Controls.Add(this.label9);
             this.cardRekamMedis.Controls.Add(this.label7);
@@ -169,18 +233,169 @@
             this.cardRekamMedis.Controls.Add(this.label2);
             this.cardRekamMedis.Controls.Add(this.txtIDPasien);
             this.cardRekamMedis.Controls.Add(this.label8);
-            this.cardRekamMedis.Location = new System.Drawing.Point(45, 110);
+            this.cardRekamMedis.Location = new System.Drawing.Point(45, 50);
             this.cardRekamMedis.Name = "cardRekamMedis";
-            this.cardRekamMedis.Size = new System.Drawing.Size(1001, 636);
+            this.cardRekamMedis.Size = new System.Drawing.Size(1001, 859);
             this.cardRekamMedis.TabIndex = 0;
             this.cardRekamMedis.Paint += new System.Windows.Forms.PaintEventHandler(this.cardRekamMedis_Paint);
+            // 
+            // cbNamaObat
+            // 
+            this.cbNamaObat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNamaObat.FormattingEnabled = true;
+            this.cbNamaObat.Location = new System.Drawing.Point(238, 598);
+            this.cbNamaObat.Name = "cbNamaObat";
+            this.cbNamaObat.Size = new System.Drawing.Size(732, 36);
+            this.cbNamaObat.TabIndex = 48;
+            // 
+            // txtKeterangan
+            // 
+            this.txtKeterangan.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKeterangan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeterangan.Location = new System.Drawing.Point(238, 745);
+            this.txtKeterangan.Name = "txtKeterangan";
+            this.txtKeterangan.Size = new System.Drawing.Size(732, 30);
+            this.txtKeterangan.TabIndex = 47;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label18.Location = new System.Drawing.Point(30, 745);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(112, 28);
+            this.label18.TabIndex = 46;
+            this.label18.Text = "Keterangan";
+            // 
+            // txtJumlah
+            // 
+            this.txtJumlah.BackColor = System.Drawing.SystemColors.Window;
+            this.txtJumlah.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJumlah.Location = new System.Drawing.Point(238, 709);
+            this.txtJumlah.Name = "txtJumlah";
+            this.txtJumlah.Size = new System.Drawing.Size(732, 30);
+            this.txtJumlah.TabIndex = 45;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.Location = new System.Drawing.Point(30, 709);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 28);
+            this.label17.TabIndex = 44;
+            this.label17.Text = "Jumlah";
+            // 
+            // txtCaraPakai
+            // 
+            this.txtCaraPakai.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCaraPakai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCaraPakai.Location = new System.Drawing.Point(238, 673);
+            this.txtCaraPakai.Name = "txtCaraPakai";
+            this.txtCaraPakai.Size = new System.Drawing.Size(732, 30);
+            this.txtCaraPakai.TabIndex = 43;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.Location = new System.Drawing.Point(30, 673);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(101, 28);
+            this.label16.TabIndex = 42;
+            this.label16.Text = "Cara Pakai";
+            // 
+            // txtDosis
+            // 
+            this.txtDosis.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDosis.Location = new System.Drawing.Point(238, 637);
+            this.txtDosis.Name = "txtDosis";
+            this.txtDosis.Size = new System.Drawing.Size(732, 30);
+            this.txtDosis.TabIndex = 41;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.Location = new System.Drawing.Point(30, 637);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(59, 28);
+            this.label15.TabIndex = 40;
+            this.label15.Text = "Dosis";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.Location = new System.Drawing.Point(30, 601);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(113, 28);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "Nama Obat";
+            // 
+            // txtIDObat
+            // 
+            this.txtIDObat.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIDObat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDObat.Location = new System.Drawing.Point(238, 564);
+            this.txtIDObat.Name = "txtIDObat";
+            this.txtIDObat.Size = new System.Drawing.Size(732, 30);
+            this.txtIDObat.TabIndex = 37;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.Location = new System.Drawing.Point(30, 564);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 28);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "ID Obat";
+            // 
+            // txtIDResepObat
+            // 
+            this.txtIDResepObat.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIDResepObat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDResepObat.Location = new System.Drawing.Point(238, 528);
+            this.txtIDResepObat.Name = "txtIDResepObat";
+            this.txtIDResepObat.Size = new System.Drawing.Size(732, 30);
+            this.txtIDResepObat.TabIndex = 35;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label10.Location = new System.Drawing.Point(30, 528);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(136, 28);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "ID Resep Obat";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(30, 485);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 28);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Resep Obat";
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSave.Location = new System.Drawing.Point(35, 549);
+            this.btnSave.Location = new System.Drawing.Point(35, 804);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(152, 38);
             this.btnSave.TabIndex = 32;
@@ -201,7 +416,7 @@
             // 
             this.txtCatatanTambahan.BackColor = System.Drawing.SystemColors.Window;
             this.txtCatatanTambahan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCatatanTambahan.Location = new System.Drawing.Point(238, 498);
+            this.txtCatatanTambahan.Location = new System.Drawing.Point(238, 427);
             this.txtCatatanTambahan.Name = "txtCatatanTambahan";
             this.txtCatatanTambahan.Size = new System.Drawing.Size(732, 30);
             this.txtCatatanTambahan.TabIndex = 30;
@@ -211,51 +426,11 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label12.Location = new System.Drawing.Point(30, 498);
+            this.label12.Location = new System.Drawing.Point(30, 427);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(173, 28);
             this.label12.TabIndex = 29;
             this.label12.Text = "Catatan Tambahan";
-            // 
-            // txtResepObat
-            // 
-            this.txtResepObat.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResepObat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResepObat.Location = new System.Drawing.Point(238, 462);
-            this.txtResepObat.Name = "txtResepObat";
-            this.txtResepObat.Size = new System.Drawing.Size(732, 30);
-            this.txtResepObat.TabIndex = 28;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Location = new System.Drawing.Point(30, 462);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(112, 28);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Resep Obat";
-            // 
-            // txtPengobatan
-            // 
-            this.txtPengobatan.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPengobatan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPengobatan.Location = new System.Drawing.Point(238, 426);
-            this.txtPengobatan.Name = "txtPengobatan";
-            this.txtPengobatan.Size = new System.Drawing.Size(732, 30);
-            this.txtPengobatan.TabIndex = 26;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(30, 426);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(117, 28);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Pengobatan";
             // 
             // txtDiagnosa
             // 
@@ -338,6 +513,7 @@
             this.txtRiwayatPenyakit.Name = "txtRiwayatPenyakit";
             this.txtRiwayatPenyakit.Size = new System.Drawing.Size(732, 30);
             this.txtRiwayatPenyakit.TabIndex = 16;
+            this.txtRiwayatPenyakit.TextChanged += new System.EventHandler(this.txtRiwayatPenyakit_TextChanged);
             // 
             // label3
             // 
@@ -404,52 +580,12 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "ID Pasien";
             // 
-            // panelRiwayatRekamMedis
-            // 
-            this.panelRiwayatRekamMedis.Controls.Add(this.label13);
-            this.panelRiwayatRekamMedis.Controls.Add(this.dataGridView1);
-            this.panelRiwayatRekamMedis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRiwayatRekamMedis.Location = new System.Drawing.Point(0, 0);
-            this.panelRiwayatRekamMedis.Name = "panelRiwayatRekamMedis";
-            this.panelRiwayatRekamMedis.Size = new System.Drawing.Size(1513, 833);
-            this.panelRiwayatRekamMedis.TabIndex = 1;
-            this.panelRiwayatRekamMedis.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRiwayatRekamMedis_Paint);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(30, 107);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(305, 38);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Riwayat Rekam Medis";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 171);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1445, 383);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Klinik.Properties.Resources.logo_klinik;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(140, 133);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            // 
             // DokterFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1867, 833);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1867, 1055);
             this.Controls.Add(this.splitContainer1);
             this.Name = "DokterFrm";
             this.Text = "DokterFrm";
@@ -459,13 +595,13 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panelRekamMedis.ResumeLayout(false);
-            this.cardRekamMedis.ResumeLayout(false);
-            this.cardRekamMedis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelRiwayatRekamMedis.ResumeLayout(false);
             this.panelRiwayatRekamMedis.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panelRekamMedis.ResumeLayout(false);
+            this.cardRekamMedis.ResumeLayout(false);
+            this.cardRekamMedis.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -491,10 +627,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCatatanTambahan;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtResepObat;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtPengobatan;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTanggalPeriksa;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnRiwayatRekamMedis;
@@ -503,5 +635,20 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtJumlah;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtCaraPakai;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtDosis;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtIDObat;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtIDResepObat;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtKeterangan;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cbNamaObat;
     }
 }

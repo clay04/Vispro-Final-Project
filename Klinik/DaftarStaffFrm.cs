@@ -68,7 +68,7 @@ namespace Klinik
                 if (txtIDStaff.Text != "" && txtUsernameStaff.Text != "" && txtNamaStaff.Text != "" && txtAlamatStaff.Text != "" && dateTanggalBekerjaStaff.Text != "" && txtNomorTeleponStaff.Text != "" && txtEmailStaff.Text != "" && txtPasswordStaff.Text != "")
                 {
                     string insertQuery = string.Format(
-                        "INSERT INTO tbl_dokter (id_dokter, username_dokter, nama_dokter, alamat, tanggal_bekerja, no_telepon, email, password)" +
+                        "INSERT INTO tbl_staff (id_staff, username, nama_lengkap, alamat, tanggal_bekerja, nomor_telepon, email, password)" +
                         "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
                         txtIDStaff.Text,
                         txtUsernameStaff.Text,
@@ -86,18 +86,18 @@ namespace Klinik
 
                     if (res == 1)
                     {
-                        MessageBox.Show("Data Dokter berhasil disimpan!");
+                        MessageBox.Show("Data Staff berhasil disimpan!");
                         ClearForm();
                         LoadData();
                     }
                     else
                     {
-                        MessageBox.Show("Gagal menyimpan data Dokter.");
+                        MessageBox.Show("Gagal menyimpan data Staff.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Form Dokter tidak lengkap.");
+                    MessageBox.Show("Form Staff tidak lengkap.");
                 }
             }
             catch (Exception ex)
@@ -143,12 +143,12 @@ namespace Klinik
                 }
                 if (!string.IsNullOrWhiteSpace(txtUsernameStaff.Text))
                 {
-                    query += " AND username_staff = @usernameStaff";
+                    query += " AND username = @usernameStaff";
                     hasParameter = true;
                 }
                 if (!string.IsNullOrWhiteSpace(txtNamaStaff.Text))
                 {
-                    query += " AND nama_staff = @namaStaff";
+                    query += " AND nama_lengkap = @namaStaff";
                     hasParameter = true;
                 }
 
@@ -185,8 +185,8 @@ namespace Klinik
                     foreach (DataRow kolom in ds.Tables[0].Rows)
                     {
                         txtIDStaff.Text = kolom["id_staff"].ToString();
-                        txtUsernameStaff.Text = kolom["username_staff"].ToString();
-                        txtNamaStaff.Text = kolom["nama_staff"].ToString();
+                        txtUsernameStaff.Text = kolom["username"].ToString();
+                        txtNamaStaff.Text = kolom["nama_lengkap"].ToString();
                         txtAlamatStaff.Text = kolom["alamat"].ToString();
 
                         DateTime tanggalBekerja;
@@ -198,7 +198,7 @@ namespace Klinik
                         {
                             MessageBox.Show("Format tanggal tidak valid di database.");
                         }
-                        txtNomorTeleponStaff.Text = kolom["no_telepon"].ToString();
+                        txtNomorTeleponStaff.Text = kolom["nomor_telepon"].ToString();
                         txtEmailStaff.Text = kolom["email"].ToString();
                         txtPasswordStaff.Text = kolom["password"].ToString();
                     }
@@ -234,11 +234,11 @@ namespace Klinik
                 }
 
                 string query = "UPDATE tbl_staff SET " +
-                               "username_staff = @usernameStaff, " +
-                               "nama_staff = @namaStaff, " +
+                               "username = @usernameStaff, " +
+                               "nama_lengkap = @namaStaff, " +
                                "alamat = @alamat, " +
                                "tanggal_bekerja = @tanggalBekerja, " +
-                               "no_telepon = @noTelepon, " +
+                               "nomor_telepon = @noTelepon, " +
                                "email = @email, " +
                                "password = @password " +
                                "WHERE id_dokter = @idDokter";
@@ -280,6 +280,59 @@ namespace Klinik
                 else
                 {
                     MessageBox.Show("Data gagal diperbarui atau tidak ditemukan.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Check if ID Dokter is provided
+                if (string.IsNullOrWhiteSpace(txtIDStaff.Text))
+                {
+                    MessageBox.Show("ID Staff harus diisi untuk menghapus data.");
+                    return;
+                }
+
+                // Confirm deletion
+                DialogResult dialogResult = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?",
+                                                            "Konfirmasi Hapus",
+                                                            MessageBoxButtons.YesNo,
+                                                            MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+
+                // SQL Delete Query
+                string query = "DELETE FROM tbl_staff WHERE id_staff = @idStaff";
+                koneksi.Open();
+                MySqlCommand perintah = new MySqlCommand(query, koneksi);
+
+                // Add the parameter
+                perintah.Parameters.AddWithValue("@idStaff", txtIDStaff.Text);
+
+                // Execute the delete command
+                int rowsAffected = perintah.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data berhasil dihapus.");
+                }
+                else
+                {
+                    MessageBox.Show("Data tidak ditemukan atau gagal dihapus.");
                 }
             }
             catch (Exception ex)

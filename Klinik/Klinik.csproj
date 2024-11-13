@@ -33,11 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Web, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +67,12 @@
     <Compile Include="AdminnFrm.Designer.cs">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataPasien.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataPasien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DaftarDokteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,24 @@
     </Compile>
     <Compile Include="DaftarStaffFrm.Designer.cs">
       <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDataPasien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportDataPasien.Designer.cs">
+      <DependentUpon>ReportDataPasien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsPasien.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsPasien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ResportDaftarPasien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResportDaftarPasien.Designer.cs">
+      <DependentUpon>ResportDaftarPasien.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffFrm.cs">
       <SubType>Form</SubType>
@@ -111,6 +141,10 @@
     <EmbeddedResource Include="AdminnFrm.resx">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataPasien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DataPasien.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DaftarDokteFrm.resx">
       <DependentUpon>DaftarDokteFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +153,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DaftarStaffFrm.resx">
       <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportDataPasien.resx">
+      <DependentUpon>ReportDataPasien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsPasien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportsPasien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResportDaftarPasien.resx">
+      <DependentUpon>ResportDaftarPasien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffFrm.resx">
       <DependentUpon>StaffFrm.cs</DependentUpon>
@@ -169,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
