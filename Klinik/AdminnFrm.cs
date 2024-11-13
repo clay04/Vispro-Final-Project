@@ -22,6 +22,7 @@ namespace Klinik
         private MySqlCommand perintah;
 
         private DataSet ds = new DataSet();
+        private DataSet dsR = new DataSet();
         private string alamat, query;
 
         private Form1 form1;
@@ -124,6 +125,8 @@ namespace Klinik
             panelDaftarObat.Visible = false;
             panelDataRekamMedis.Visible = true;
             panelTenagaKerja.Visible = false;
+
+            LoadData_2();
         }
 
         private void txtNamaPasien_TextChanged(object sender, EventArgs e)
@@ -281,17 +284,74 @@ namespace Klinik
 
         private void LoadData()
         {
-            try
+            if (PanelDaftarPasien.Visible)
             {
-                string selectQuery = "SELECT * FROM tbl_obat";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, koneksi);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                dataGridView2.DataSource = dt;
+                try
+                {
+                    koneksi.Open();
+                    query = "SELECT * FROM tbl_rekam_medis";
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    ds.Clear();
+                    adapter.Fill(ds);
+                    koneksi.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (Exception ex)
+        }
+
+
+        private void LoadData_2()
+        {
+            if (panelDataRekamMedis.Visible)
             {
-                MessageBox.Show("Terjadi kesalahan saat memuat data: " + ex.Message);
+                try
+                {
+                    {
+                        koneksi.Open();
+                        string query = "SELECT * FROM tbl_rekam_medis";
+                        using (MySqlCommand command = new MySqlCommand(query, koneksi))
+                        {
+                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                            {
+                                koneksi.Close();
+                                DataTable dataTable = new DataTable();
+                                adapter.Fill(dataTable);
+
+                                // Configure the DataGridView
+                                dataGridView4.DataSource = dataTable;
+                                dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                                dataGridView4.RowHeadersVisible = false;
+                                dataGridView4.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+                                dataGridView4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                dataGridView4.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                                dataGridView4.EnableHeadersVisualStyles = false;
+                                dataGridView4.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(64, 64, 64);
+                                dataGridView4.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                                dataGridView4.GridColor = Color.FromArgb(192, 192, 192);
+                                dataGridView4.BorderStyle = BorderStyle.None;
+                                dataGridView4.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+                                // Adjust column widths
+                                dataGridView4.Columns[0].Width = 80; // id_rekam_medis
+                                dataGridView4.Columns[1].Width = 100; // id_pasien
+                                dataGridView4.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // tanggal_periksa
+                                dataGridView4.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // diagnosa
+                                dataGridView4.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // catatan_tambahan
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 
@@ -834,23 +894,227 @@ namespace Klinik
             txtJenisObat.Text = dataGridView2.CurrentRow.Cells[6].Value.ToString();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void saveRekam_Click(object sender, EventArgs e)
+        {
+            try
+            {
 
+                if (idpRekam.Text != "" && diagnosaRekam.Text != "" && tglRekam.Text != "" && textBox5.Text != "")
+                {
 
+                    koneksi.Open();
+                    string insertQuery = string.Format(
+                        "INSERT INTO tbl_rekam_medis (id_pasien, tanggal_periksa, diagnosa, catatan_tambahan) " +
+                        "VALUES ('{0}', '{1}', '{2}', '{3}');",
+                        idpRekam.Text,
+                        tglRekam.Value.ToString("yyyy-MM-dd"),
+                        diagnosaRekam.Text,
+                        textBox5.Text);
+
+                    perintah = new MySqlCommand(insertQuery, koneksi);
+                    int res = perintah.ExecuteNonQuery();
+                    koneksi.Close();
+
+                    if (res == 1)
+                    {
+                        MessageBox.Show("Data rekam medis berhasil disimpan!");
+                        ClearForm(); // Method untuk mengosongkan input form
+                        LoadData_2();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal menyimpan data rekam medis.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Form rekam medis tidak lengkap.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
+        }
+
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void idpRekam_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datagridview4(object sender, EventArgs e)
+        {
+            idRekam.Text = dataGridView4.CurrentRow.Cells[0].Value.ToString();
+
+            if (dataGridView4.CurrentRow.Cells[2].Value != null && dataGridView4.CurrentRow.Cells[2].Value != DBNull.Value)
+            {
+                if (dataGridView4.CurrentRow.Cells[2].Value is DateTime)
+                {
+                    tglRekam.Value = (DateTime)dataGridView4.CurrentRow.Cells[2].Value;
+                }
+                else
+                {
+                    string dateStr = dataGridView4.CurrentRow.Cells[2].Value.ToString();
+                    DateTime tanggal;
+
+                    if (DateTime.TryParseExact(dateStr,
+                        new[] { "yyyy-MM-dd", "dd/MM/yyyy", "MM/dd/yyyy", "dd-MM-yyyy" },
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        System.Globalization.DateTimeStyles.None,
+                        out tanggal))
+                    {
+                        tglRekam.Value = tanggal;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tidak dapat mengkonversi tanggal: " + dateStr);
+                    }
+                }
+            }
+
+            idpRekam.Text = dataGridView4.CurrentRow.Cells[1].Value.ToString();
+            diagnosaRekam.Text = dataGridView4.CurrentRow.Cells[3].Value.ToString();
+            textBox5.Text = dataGridView4.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void searchRekam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string query = @"SELECT * FROM tbl_rekam_medis 
+                         WHERE id_rekam_medis = @id_rekam_medis";
+               
+                LoadData_2();
+                dsR.Clear();
+
+                koneksi.Open();
+                MySqlCommand perintah = new MySqlCommand(query, koneksi);
+
+                // Menambahkan semua parameter yang mungkin digunakan
+                perintah.Parameters.AddWithValue("@id_rekam_medis", idRekam.Text);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
+                adapter.Fill(dsR);
+
+                if (dsR.Tables[0].Rows.Count > 0)
+                {
+                    // Menampilkan data pada grid dan mengisi TextBox
+                    dataGridView4.DataSource = dsR.Tables[0];
+
+                    // Mengisi data TextBox dari baris pertama
+                    DataRow kolom = dsR.Tables[0].Rows[0];
+                    idRekam.Text = kolom["id_rekam_medis"].ToString();
+                    
+
+                }
+                else
+                {
+                    MessageBox.Show("Tidak ditemukan.");
+                    koneksi.Close();
+                    LoadData_2();
+                }
+            }
+
+            finally
+            { 
+                koneksi.Close();
+               
+            }
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            LoadData_2();
+        }
+
+        private void updateRekam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                koneksi.Open();
+                string query = @"UPDATE tbl_rekam_medis SET 
+                        id_pasien = @id_pasien,
+                        tanggal_periksa = @tanggal,
+                        diagnosa = @diagnosa,
+                        catatan_tambahan = @catatan
+                        WHERE id_rekam_medis = @id";
+
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@id", idRekam.Text);
+                cmd.Parameters.AddWithValue("@id_pasien", idpRekam.Text);
+                cmd.Parameters.AddWithValue("@tanggal", tglRekam.Value.Date);
+                cmd.Parameters.AddWithValue("@diagnosa", diagnosaRekam.Text);
+                cmd.Parameters.AddWithValue("@catatan", textBox5.Text);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Data berhasil diupdate!");
+            }
+            finally
+            {
+                koneksi.Close();
+                LoadData_2();
+            }
+        }
+
+        private void deleteRekam_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(idRekam.Text))
+            {
+                MessageBox.Show("Pilih data yang akan dihapus terlebih dahulu!");
+                return;
+            }
+
+            if (MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    koneksi.Open();
+                    string query = "DELETE FROM tbl_rekam_medis WHERE id_Rekam_medis = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                    cmd.Parameters.AddWithValue("@id", idRekam.Text);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data berhasil dihapus!");
+                    ClearForm(); // Membersihkan form
+                }
+                finally
+                {
+                    koneksi.Close();
+                    LoadData_2();
+                }
+            }
+        }
 
         private void TampilkanJumlahTenagaKerja()
         {
             try
             {
-                // Buka koneksi ke database
                 koneksi.Open();
 
-                // Query untuk menghitung jumlah dokter dan staff
                 string queryDokter = "SELECT COUNT(*) FROM tbl_dokter";
                 string queryStaff = "SELECT COUNT(*) FROM tbl_staff";
 
-                // Hitung jumlah dokter
                 MySqlCommand perintahDokter = new MySqlCommand(queryDokter, koneksi);
                 int jumlahDokter = Convert.ToInt32(perintahDokter.ExecuteScalar());
 
