@@ -59,6 +59,49 @@ namespace Klinik
         private void DaftarStaffFrm_Load(object sender, EventArgs e)
         {
             panel1.Paint += new PaintEventHandler(panel1_Paint);
+
+            try
+            {
+                ds.Clear();
+                string query = "SELECT * FROM tbl_staff";
+                koneksi.Open();
+                MySqlCommand perintah = new MySqlCommand(query, koneksi);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
+                adapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+
+                dataGridView1.Columns["id_staff"].HeaderText = "ID Staff";
+                dataGridView1.Columns["username"].HeaderText = "Username";
+                dataGridView1.Columns["nama_lengkap"].HeaderText = "Nama";
+                dataGridView1.Columns["alamat"].HeaderText = "Alamat";
+                dataGridView1.Columns["tanggal_bekerja"].HeaderText = "Tanggal Bekerja";
+                dataGridView1.Columns["nomor_telepon"].HeaderText = "Nomor Telepon";
+                dataGridView1.Columns["email"].HeaderText = "Email";
+                dataGridView1.Columns["password"].HeaderText = "Password";
+
+                dataGridView1.Columns["id_staff"].Width = 80;
+                dataGridView1.Columns["username"].Width = 120;
+                dataGridView1.Columns["nama_lengkap"].Width = 150;
+                dataGridView1.Columns["alamat"].Width = 200;
+                dataGridView1.Columns["tanggal_bekerja"].Width = 120;
+                dataGridView1.Columns["nomor_telepon"].Width = 100;
+                dataGridView1.Columns["email"].Width = 150;
+                dataGridView1.Columns["password"].Width = 100;
+
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 12);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -34,6 +34,7 @@ namespace Klinik
             InitializeComponent();
 
             panelPendaftaran.Visible = false;
+            panelPembayaran.Visible = false;
 
             this.form1 = form1;
         }
@@ -50,7 +51,9 @@ namespace Klinik
 
         private void btnPendaftaran_Click(object sender, EventArgs e)
         {
+            
             panelPendaftaran.Visible=true;
+            panelPembayaran.Visible=false;
         }
 
         private void btnDaftarPasien_Click(object sender, EventArgs e)
@@ -143,7 +146,7 @@ namespace Klinik
             {
                 if (txtNamaPasien.Text != "" && dateTglLhirPasien.Text != "" && txtAlamat.Text != "" &&
                     txtNomorTelepon.Text != "" && CBJenisKelamin.Text != "" && dateTglDaftar.Text != "" &&
-                    txtRiwayatPenyakit.Text != "" && cbNamaDokter.SelectedItem != null)
+                    cbNamaDokter.SelectedItem != null)
                 {
                     // Ambil id_dokter dari ComboBox
                     var selectedDokter = (ComboBoxItem)cbNamaDokter.SelectedItem;
@@ -156,8 +159,8 @@ namespace Klinik
                     koneksi.Open();
 
                     // 1. Insert ke tabel `tbl_pasien`
-                    string queryPasien = "INSERT INTO tbl_pasien (nama_pasien, tanggal_lahir, alamat, no_telepon, gender, riwayat_penyakit) " +
-                                         "VALUES (@nama_pasien, @tanggal_lahir, @alamat, @no_telepon, @gender, @riwayat_penyakit);";
+                    string queryPasien = "INSERT INTO tbl_pasien (nama_pasien, tanggal_lahir, alamat, no_telepon, gender) " +
+                                         "VALUES (@nama_pasien, @tanggal_lahir, @alamat, @no_telepon, @gender);";
                     long idPasien;
 
                     using (MySqlCommand perintahPasien = new MySqlCommand(queryPasien, koneksi))
@@ -167,7 +170,6 @@ namespace Klinik
                         perintahPasien.Parameters.AddWithValue("@alamat", txtAlamat.Text);
                         perintahPasien.Parameters.AddWithValue("@no_telepon", txtNomorTelepon.Text);
                         perintahPasien.Parameters.AddWithValue("@gender", CBJenisKelamin.Text);
-                        perintahPasien.Parameters.AddWithValue("@riwayat_penyakit", txtRiwayatPenyakit.Text);
 
                         int resPasien = perintahPasien.ExecuteNonQuery();
                         if (resPasien != 1)
@@ -211,10 +213,11 @@ namespace Klinik
             catch (Exception ex)
             {
                 MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+            }
+            finally
+            {
                 if (koneksi.State == ConnectionState.Open)
-                {
                     koneksi.Close();
-                }
             }
         }
 
@@ -247,15 +250,15 @@ namespace Klinik
                         }
                     }
                 }
-                koneksi.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Gagal memuat data dokter: " + ex.Message);
+            }
+            finally
+            {
                 if (koneksi.State == ConnectionState.Open)
-                {
                     koneksi.Close();
-                }
             }
         }
 
@@ -490,6 +493,18 @@ namespace Klinik
                     koneksi.Close();
                 }
             }
+        }
+
+        private void btnPembayaran_Click(object sender, EventArgs e)
+        {
+            panelPendaftaran.Visible = false;
+            panelPembayaran.Visible = true;
+        }
+
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+            panelPendaftaran.Visible = false;
+            panelPembayaran.Visible = false;
         }
 
         // Fungsi untuk menghitung total harga obat dari resep berdasarkan ID pendaftaran pasien

@@ -30,11 +30,12 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnDash = new System.Windows.Forms.Button();
             this.btnPembayaran = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPendaftaran = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelPembayaran = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnSavePembayaran = new System.Windows.Forms.Button();
             this.cbStatusPembayaran = new System.Windows.Forms.ComboBox();
@@ -54,15 +55,12 @@
             this.txtNamaPasienPembayaran = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelPendaftaran = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbNamaDokter = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dateTglDaftar = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.txtRiwayatPenyakit = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtAlamat = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNomorTelepon = new System.Windows.Forms.TextBox();
@@ -75,12 +73,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panelPembayaran.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelPendaftaran.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -107,6 +107,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.splitContainer1.Panel1.Controls.Add(this.btnDash);
             this.splitContainer1.Panel1.Controls.Add(this.btnPembayaran);
             this.splitContainer1.Panel1.Controls.Add(this.btnLogout);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
@@ -116,25 +117,41 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.panelPendaftaran);
+            this.splitContainer1.Panel2.Controls.Add(this.panelPembayaran);
+            this.splitContainer1.Panel2.Controls.Add(this.label20);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1828, 1000);
-            this.splitContainer1.SplitterDistance = 356;
+            this.splitContainer1.Size = new System.Drawing.Size(1902, 1033);
+            this.splitContainer1.SplitterDistance = 370;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
+            // btnDash
+            // 
+            this.btnDash.BackgroundImage = global::Klinik.Properties.Resources.Home;
+            this.btnDash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDash.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDash.Location = new System.Drawing.Point(290, 349);
+            this.btnDash.Name = "btnDash";
+            this.btnDash.Size = new System.Drawing.Size(51, 47);
+            this.btnDash.TabIndex = 16;
+            this.btnDash.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDash.UseVisualStyleBackColor = true;
+            this.btnDash.Click += new System.EventHandler(this.btnDash_Click);
+            // 
             // btnPembayaran
             // 
             this.btnPembayaran.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPembayaran.Location = new System.Drawing.Point(12, 387);
+            this.btnPembayaran.Location = new System.Drawing.Point(12, 457);
             this.btnPembayaran.Name = "btnPembayaran";
             this.btnPembayaran.Size = new System.Drawing.Size(353, 38);
             this.btnPembayaran.TabIndex = 5;
             this.btnPembayaran.Text = "Pembayaran";
             this.btnPembayaran.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPembayaran.UseVisualStyleBackColor = true;
+            this.btnPembayaran.Click += new System.EventHandler(this.btnPembayaran_Click);
             // 
             // btnLogout
             // 
@@ -164,7 +181,7 @@
             // btnPendaftaran
             // 
             this.btnPendaftaran.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPendaftaran.Location = new System.Drawing.Point(12, 339);
+            this.btnPendaftaran.Location = new System.Drawing.Point(12, 409);
             this.btnPendaftaran.Name = "btnPendaftaran";
             this.btnPendaftaran.Size = new System.Drawing.Size(353, 38);
             this.btnPendaftaran.TabIndex = 0;
@@ -173,15 +190,16 @@
             this.btnPendaftaran.UseVisualStyleBackColor = true;
             this.btnPendaftaran.Click += new System.EventHandler(this.btnPendaftaran_Click);
             // 
-            // panel2
+            // panelPembayaran
             // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1471, 1000);
-            this.panel2.TabIndex = 22;
+            this.panelPembayaran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelPembayaran.Controls.Add(this.panel3);
+            this.panelPembayaran.Controls.Add(this.label2);
+            this.panelPembayaran.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPembayaran.Location = new System.Drawing.Point(0, 0);
+            this.panelPembayaran.Name = "panelPembayaran";
+            this.panelPembayaran.Size = new System.Drawing.Size(1531, 1033);
+            this.panelPembayaran.TabIndex = 22;
             // 
             // panel3
             // 
@@ -373,24 +391,13 @@
             // panelPendaftaran
             // 
             this.panelPendaftaran.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelPendaftaran.Controls.Add(this.label3);
             this.panelPendaftaran.Controls.Add(this.panel1);
             this.panelPendaftaran.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPendaftaran.Location = new System.Drawing.Point(0, 0);
             this.panelPendaftaran.Name = "panelPendaftaran";
-            this.panelPendaftaran.Size = new System.Drawing.Size(1471, 1000);
+            this.panelPendaftaran.Size = new System.Drawing.Size(1531, 1033);
             this.panelPendaftaran.TabIndex = 3;
             this.panelPendaftaran.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPendaftaran_Paint);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Emoji", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 37);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Pendaftaran";
             // 
             // panel1
             // 
@@ -400,8 +407,6 @@
             this.panel1.Controls.Add(this.dateTglDaftar);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.btnSubmit);
-            this.panel1.Controls.Add(this.txtRiwayatPenyakit);
-            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.txtAlamat);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtNomorTelepon);
@@ -416,7 +421,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(14, 82);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1445, 846);
+            this.panel1.Size = new System.Drawing.Size(1496, 846);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -424,7 +429,7 @@
             // 
             this.cbNamaDokter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNamaDokter.FormattingEnabled = true;
-            this.cbNamaDokter.Location = new System.Drawing.Point(212, 551);
+            this.cbNamaDokter.Location = new System.Drawing.Point(212, 424);
             this.cbNamaDokter.Name = "cbNamaDokter";
             this.cbNamaDokter.Size = new System.Drawing.Size(651, 33);
             this.cbNamaDokter.TabIndex = 21;
@@ -435,7 +440,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label12.Location = new System.Drawing.Point(4, 551);
+            this.label12.Location = new System.Drawing.Point(4, 424);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(129, 28);
             this.label12.TabIndex = 20;
@@ -445,7 +450,7 @@
             // 
             this.dateTglDaftar.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTglDaftar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTglDaftar.Location = new System.Drawing.Point(212, 508);
+            this.dateTglDaftar.Location = new System.Drawing.Point(212, 381);
             this.dateTglDaftar.Margin = new System.Windows.Forms.Padding(5);
             this.dateTglDaftar.Name = "dateTglDaftar";
             this.dateTglDaftar.Size = new System.Drawing.Size(732, 34);
@@ -458,7 +463,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Location = new System.Drawing.Point(3, 513);
+            this.label11.Location = new System.Drawing.Point(3, 386);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(139, 28);
             this.label11.TabIndex = 16;
@@ -477,28 +482,6 @@
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // txtRiwayatPenyakit
-            // 
-            this.txtRiwayatPenyakit.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRiwayatPenyakit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRiwayatPenyakit.Location = new System.Drawing.Point(212, 398);
-            this.txtRiwayatPenyakit.Multiline = true;
-            this.txtRiwayatPenyakit.Name = "txtRiwayatPenyakit";
-            this.txtRiwayatPenyakit.Size = new System.Drawing.Size(732, 92);
-            this.txtRiwayatPenyakit.TabIndex = 14;
-            this.txtRiwayatPenyakit.TextChanged += new System.EventHandler(this.txtRiwayatPenyakit_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(4, 398);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(158, 28);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Riwayat Penyakit";
             // 
             // txtAlamat
             // 
@@ -631,12 +614,32 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Nama Pasien";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(666, 446);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(202, 38);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Welcome Staff";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Emoji", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(177, 37);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Pendaftaran";
+            // 
             // StaffFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1828, 1000);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.splitContainer1);
             this.Name = "StaffFrm";
             this.Text = "StaffFrm";
@@ -645,15 +648,15 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelPembayaran.ResumeLayout(false);
+            this.panelPembayaran.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panelPendaftaran.ResumeLayout(false);
-            this.panelPendaftaran.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -680,8 +683,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNomorTelepon;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.TextBox txtRiwayatPenyakit;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtAlamat;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DateTimePicker dateTglDaftar;
@@ -690,7 +691,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbNamaDokter;
         private System.Windows.Forms.Button btnPembayaran;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelPembayaran;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtNamaPasienPembayaran;
         private System.Windows.Forms.Label label2;
@@ -709,5 +710,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cbMetodePembayaran;
         private System.Windows.Forms.Button btnSavePembayaran;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnDash;
     }
 }

@@ -35,9 +35,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.CBUser = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -113,7 +113,9 @@
             this.CBUser.Items.AddRange(new object[] {
             "admin",
             "Staff",
-            "Dokter"});
+            "Dokter",
+            "Perawat",
+            "Apoteker"});
             this.CBUser.Location = new System.Drawing.Point(174, 189);
             this.CBUser.Name = "CBUser";
             this.CBUser.Size = new System.Drawing.Size(345, 33);
@@ -135,21 +137,11 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(65, 59);
+            this.panel1.Location = new System.Drawing.Point(145, 59);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(709, 526);
             this.panel1.TabIndex = 10;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Klinik.Properties.Resources.logo_klinik;
-            this.pictureBox1.Location = new System.Drawing.Point(291, 21);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 74);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
             // 
             // txtPassword
             // 
@@ -166,6 +158,16 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(345, 31);
             this.txtUsername.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Klinik.Properties.Resources.logo_klinik;
+            this.pictureBox1.Location = new System.Drawing.Point(291, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 74);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
