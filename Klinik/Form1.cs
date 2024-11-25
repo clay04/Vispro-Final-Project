@@ -99,6 +99,14 @@ namespace Klinik
                 {
                     query = "SELECT * FROM tbl_user WHERE username = @username";
                 }
+                else if (CBUser.SelectedItem.ToString() == "Perawat")
+                {
+                    query = "SELECT * FROM tbl_perawat WHERE username_perawat = @username";
+                }
+                else if (CBUser.SelectedItem.ToString() == "Apoteker")
+                {
+                    query = "SELECT * FROM tbl_apoteker WHERE username_apoteker = @username";
+                }
 
                 ds.Clear();
 
@@ -135,13 +143,27 @@ namespace Klinik
                             }
                             else if (CBUser.SelectedItem.ToString() == "Dokter")
                             {
-                                DokterFrm frmDoctor = new DokterFrm();
+                                DokterFrm frmDoctor = new DokterFrm(this);
                                 frmDoctor.Show();
+                                this.Hide();
                             }
                             else if (CBUser.SelectedItem.ToString() == "admin")
                             {
-                                AdminnFrm frmAdminn = new AdminnFrm();
+                                AdminnFrm frmAdminn = new AdminnFrm(this);
                                 frmAdminn.Show();
+                                this.Hide();
+                            }
+                            else if (CBUser.SelectedItem.ToString() == "Perawat")
+                            {
+                                PerawatFrm perawatFrm= new PerawatFrm(this);
+                                perawatFrm.Show();
+                                this.Hide();
+                            }
+                            else if (CBUser.SelectedItem.ToString() == "Apoteker")
+                            {
+                                ApotekerFrm apotekerFrm= new ApotekerFrm(this);
+                                apotekerFrm.Show();
+                                this.Hide();
                             }
                         }
                         else
@@ -158,6 +180,10 @@ namespace Klinik
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
             }
             finally
             {

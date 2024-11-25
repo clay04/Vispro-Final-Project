@@ -33,11 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Web, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,11 +67,95 @@
     <Compile Include="AdminnFrm.Designer.cs">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApotekerFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApotekerFrm.Designer.cs">
+      <DependentUpon>ApotekerFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRResepObat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRResepObat.Designer.cs">
+      <DependentUpon>CRResepObat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDaftarObat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDaftarObat.Designer.cs">
+      <DependentUpon>FrmDaftarObat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PerawatFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PerawatFrm.Designer.cs">
+      <DependentUpon>PerawatFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResepObat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResepObat.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ResportDaftarObat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResportDaftarObat.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DaftarRekamMedis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DaftarRekamMedis.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataPasien.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataPasien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DaftarDokteFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarDokteFrm.Designer.cs">
+      <DependentUpon>DaftarDokteFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DaftarObat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DaftarObat.Designer.cs">
       <DependentUpon>DaftarObat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaftarStaffFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarStaffFrm.Designer.cs">
+      <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDaftarRekamMedis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDaftarRekamMedis.Designer.cs">
+      <DependentUpon>FrmDaftarRekamMedis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDataPasien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportDataPasien.Designer.cs">
+      <DependentUpon>ReportDataPasien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsPasien.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsPasien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ResportDaftarPasien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResportDaftarPasien.Designer.cs">
+      <DependentUpon>ResportDaftarPasien.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffFrm.cs">
       <SubType>Form</SubType>
@@ -99,8 +189,55 @@
     <EmbeddedResource Include="AdminnFrm.resx">
       <DependentUpon>AdminnFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ApotekerFrm.resx">
+      <DependentUpon>ApotekerFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRResepObat.resx">
+      <DependentUpon>CRResepObat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDaftarObat.resx">
+      <DependentUpon>FrmDaftarObat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PerawatFrm.resx">
+      <DependentUpon>PerawatFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResepObat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ResepObat.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResportDaftarObat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ResportDaftarObat.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarRekamMedis.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DaftarRekamMedis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataPasien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DataPasien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarDokteFrm.resx">
+      <DependentUpon>DaftarDokteFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DaftarObat.resx">
       <DependentUpon>DaftarObat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarStaffFrm.resx">
+      <DependentUpon>DaftarStaffFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDaftarRekamMedis.resx">
+      <DependentUpon>FrmDaftarRekamMedis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportDataPasien.resx">
+      <DependentUpon>ReportDataPasien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsPasien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportsPasien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResportDaftarPasien.resx">
+      <DependentUpon>ResportDaftarPasien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffFrm.resx">
       <DependentUpon>StaffFrm.cs</DependentUpon>
@@ -142,6 +279,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo klinik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sampleDokter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Docter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-monochrome-patient-icon-for-web-and-infographics-medical-heart-illustration-vector-png-image_12220625.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon Pasien.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon obat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon obat1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon tenaja kerja.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
